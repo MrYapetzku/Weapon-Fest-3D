@@ -16,12 +16,7 @@ public class Player : MonoBehaviour
     public event UnityAction<int> PlayerGunsCountChanged;
     public event UnityAction GameOver;
 
-    public int PlayerGunsCount => _playerGuns.Count;
-
-    #region (Для теста. Потом удалить.)
-    private PlayerInput _inpunt;
-    private bool _testFlag = true;
-    #endregion
+    public int GunsCount => _playerGuns.Count;
 
     private void Awake()
     {
@@ -29,29 +24,7 @@ public class Player : MonoBehaviour
         _playerGuns = new List<Gun>();
         SetGun(Vector3.zero);
         PlayerGunsCountChanged?.Invoke(_playerGuns.Count);
-
-        #region (Для теста. Потом удалить.)
-        _inpunt = new PlayerInput();
-        _inpunt.Enable();
-        _inpunt.Player.TestAction.performed += ctx => OnTestAction();
-        #endregion
     }
-
-    #region (Для теста. Потом удалить.)
-    public void OnTestAction()
-    {
-        if (_testFlag)
-        {
-            IncreaseGunsCountBy(2);
-            _testFlag = false;
-        }
-        else
-        {
-            DecreaseGunsCountBy(1);
-            _testFlag = true;
-        }
-    }
-    #endregion
 
     public void IncreaseGunsCountBy(int value)
     {
