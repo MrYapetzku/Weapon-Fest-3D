@@ -13,10 +13,7 @@ public class GunsCountChangerSettings : ScriptableObject
 
     private void OnValidate()
     {
-        if (_operation != '+')
-            if (_operation != '-')
-                if (_operation != '*')
-                    if (_operation != '/')
-                        _operation = '+';
+        if (_operation != '+' && _operation != '-' && _operation != '*' && _operation != '/')
+            _operation = '+';
     }
 }
