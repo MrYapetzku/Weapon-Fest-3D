@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: GunsCountChangerSettings3
   m_EditorClassIdentifier: 
   _operation: 42
-  _value: 5
+  _value: 2
   _material: {fileID: 2100000, guid: aec8a7748e68a2548b681a7778490b14, type: 2}

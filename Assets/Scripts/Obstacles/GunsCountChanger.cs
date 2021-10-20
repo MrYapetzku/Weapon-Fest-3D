@@ -6,8 +6,8 @@ public class GunsCountChanger : MonoBehaviour
     [SerializeField] private TMP_Text _text;
     [SerializeField] private MeshRenderer _meshRenderer;
 
-    private char _operation;
-    private int _value;
+    public char Operation { get; private set; }
+    public int Value { get; private set; }
 
     private void Awake()
     {
@@ -15,34 +15,8 @@ public class GunsCountChanger : MonoBehaviour
         int index = Random.Range(0, settings.Length);
 
         _meshRenderer.material = settings[index].Material;
-        _operation = settings[index].Operation;
-        _value = settings[index].Value;
-
-        _text.text = _operation + _value.ToString();
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        var player = other.GetComponentInParent<Player>();
-        if (player)
-        {
-            switch (_operation)
-            {
-                case '+':                    
-                    player.IncreaseGunsCountBy(_value);
-                    break;
-                case '-':
-                    player.DecreaseGunsCountBy(_value);
-                    break;
-                case '*':
-                    int increaseValue = player.GunsCount * (_value - 1);
-                    player.IncreaseGunsCountBy(increaseValue);
-                    break;
-                case '/':
-                    int decreaseValue = player.GunsCount - (player.GunsCount  / _value);
-                    player.DecreaseGunsCountBy(decreaseValue);
-                    break;
-            }
-        }
+        Operation = settings[index].Operation;
+        Value = settings[index].Value;
+        _text.text = Operation + Value.ToString();
     }
 }

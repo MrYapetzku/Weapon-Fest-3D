@@ -248,8 +248,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1158044792344720637}
-  - component: {fileID: 1158044792344720636}
   - component: {fileID: -1774751246594008992}
+  - component: {fileID: 1158044792344720636}
+  - component: {fileID: -4527675920556994066}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -273,19 +274,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1158044792344720636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1158044792344720639}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f80b62c1f2ab6ca418b2b55060c10e50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _shootPoint: {fileID: 5022346907228566772}
 --- !u!95 &-1774751246594008992
 Animator:
   serializedVersion: 3
@@ -305,3 +293,28 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1158044792344720636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158044792344720639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f80b62c1f2ab6ca418b2b55060c10e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shootPoint: {fileID: 5022346907228566772}
+--- !u!114 &-4527675920556994066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158044792344720639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d774b6af76fb1ea498fcead4f6bc03d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -5,37 +5,46 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Shooting))]
 public class Player : MonoBehaviour
 {
+    [SerializeField] private GunsContainer _gunsContainer;
     [SerializeField] private Gun _gunTemplate;
     [SerializeField] private int _poolCount;
-    [SerializeField] private float _maxGunsCircleRadius;
-    [SerializeField] private float _gunsCircleExpansionRatio;
 
     private List<Gun> _playerGuns;
     private PoolMono<Gun> _gunsPool;
 
     public event UnityAction<int> PlayerGunsCountChanged;
     public event UnityAction GameOver;
+    public event UnityAction LevelFinished;
 
     public int GunsCount => _playerGuns.Count;
 
-    private void Awake()
+    private void Start()
     {
-        _gunsPool = new PoolMono<Gun>(_gunTemplate, transform, _poolCount);
+        _gunsPool = new PoolMono<Gun>(_gunTemplate, _gunsContainer.transform, _poolCount);
         _playerGuns = new List<Gun>();
-        SetGun(Vector3.zero);
+        _playerGuns.Add(_gunsPool.GetFreeElement());
         PlayerGunsCountChanged?.Invoke(_playerGuns.Count);
+    }
+
+    private void Update()
+    {        
+    }
+
+    public void Finish()
+    {
+        LevelFinished?.Invoke();
     }
 
     public void IncreaseGunsCountBy(int value)
     {
         for (int i = 0; i < value; i++)
-            SetGun(GenerateGunPlacePoint());
+            _playerGuns.Add(_gunsPool.GetFreeElement());
         PlayerGunsCountChanged?.Invoke(_playerGuns.Count);
     }
 
     public void DecreaseGunsCountBy(int value)
     {
-        if (_playerGuns.Count - value > 0)
+        if (_playerGuns.Count > value)
         {
             for (int i = 0; i < value; i++)
             {
@@ -53,23 +62,5 @@ public class Player : MonoBehaviour
             PlayerGunsCountChanged?.Invoke(_playerGuns.Count);
             GameOver?.Invoke();
         }
-    }
-
-    private Vector3 GenerateGunPlacePoint()
-    {
-        Vector3 point = Random.insideUnitCircle * GetGunsCircleRadius();
-        return transform.position + point;
-    }
-
-    private float GetGunsCircleRadius()
-    {
-        return Mathf.Clamp(_playerGuns.Count * _gunsCircleExpansionRatio, 0, _maxGunsCircleRadius);
-    }
-
-    private void SetGun(Vector3 point)
-    {
-        Gun getedGun = _gunsPool.GetFreeElement();
-        _playerGuns.Add(getedGun);
-        getedGun.transform.position = point;
     }
 }
