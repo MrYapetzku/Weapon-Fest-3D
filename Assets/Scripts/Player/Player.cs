@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(Shooting))]
+[RequireComponent(typeof(PlayerMover), typeof(Shooting))]
 public class Player : MonoBehaviour
 {
     [SerializeField] private GunsContainer _gunsContainer;
@@ -13,7 +13,8 @@ public class Player : MonoBehaviour
     private PoolMono<Gun> _gunsPool;
 
     public event UnityAction<int> PlayerGunsCountChanged;
-    public event UnityAction GameOver;
+    public event UnityAction GameLoss;
+    public event UnityAction LevelFinishing;
     public event UnityAction LevelFinished;
 
     public int GunsCount => _playerGuns.Count;
@@ -22,15 +23,19 @@ public class Player : MonoBehaviour
     {
         _gunsPool = new PoolMono<Gun>(_gunTemplate, _gunsContainer.transform, _poolCount);
         _playerGuns = new List<Gun>();
-        _playerGuns.Add(_gunsPool.GetFreeElement());
-        PlayerGunsCountChanged?.Invoke(_playerGuns.Count);
+        ResetPlayerGunsCount();
     }
 
     private void Update()
-    {        
+    {
     }
 
-    public void Finish()
+    public void OnLevelFinishing()
+    {
+        LevelFinishing?.Invoke();
+    }
+
+    public void OnLevelFinished()
     {
         LevelFinished?.Invoke();
     }
@@ -56,11 +61,21 @@ public class Player : MonoBehaviour
         }
         else
         {
-            foreach (var gun in _playerGuns)
-                gun.gameObject.SetActive(false);
-            _playerGuns.Clear();
-            PlayerGunsCountChanged?.Invoke(_playerGuns.Count);
-            GameOver?.Invoke();
+            ResetPlayerGunsCount();
+            GameLoss?.Invoke();
         }
+    }
+
+    public void ResetPlayerGunsCount()
+    {
+        if (_playerGuns == null)
+            return;
+
+        foreach (var gun in _playerGuns)
+            gun.gameObject.SetActive(false);
+        _playerGuns.Clear();
+
+        _playerGuns.Add(_gunsPool.GetFreeElement());
+        PlayerGunsCountChanged?.Invoke(_playerGuns.Count);
     }
 }

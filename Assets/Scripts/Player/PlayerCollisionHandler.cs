@@ -1,8 +1,14 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Player))]
 public class PlayerCollisionHandler : MonoBehaviour
 {
-    [SerializeField] private Player _player;
+    private Player _player;
+
+    private void Awake()
+    {
+        _player = GetComponent<Player>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -11,7 +17,7 @@ public class PlayerCollisionHandler : MonoBehaviour
         var finish = other.GetComponentInParent<FinishTrigger>();
 
         if (finish)
-            _player.Finish();
+            _player.OnLevelFinishing();
 
         if (balloon)
         {

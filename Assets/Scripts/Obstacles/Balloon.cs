@@ -16,14 +16,9 @@ public class Balloon : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void Hit()
     {
-        var bullet = other.GetComponentInParent<Bullet>();
-        if (bullet)
-        {
-            BalloonShot?.Invoke(_score);
-            bullet.gameObject.SetActive(false);
-            Deactivate();
-        }
+        BalloonShot?.Invoke(_score);
+        gameObject.SetActive(false);
     }
 }

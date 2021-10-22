@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class PlayerGunsCountVIewer : MonoBehaviour
+public class PlayerGunsCountViewer : MonoBehaviour
 {
     [SerializeField] private Player _player;
     [SerializeField] private TMP_Text _text;

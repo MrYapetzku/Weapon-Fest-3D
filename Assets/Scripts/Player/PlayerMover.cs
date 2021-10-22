@@ -8,11 +8,21 @@ public class PlayerMover : MonoBehaviour
     private PlayerInput _input;
     private float _screenTouchPositionX;
 
-    private void Start()
+    private void Awake()
     {
         _input = new PlayerInput();
-        _input.Enable();
+    }
+
+    private void OnEnable()
+    {
+        _input.Player.Enable();
         _input.Player.MoveX.performed += ctx => OnMoveX();
+    }
+
+    private void OnDisable()
+    {
+        _input.Player.Disable();
+        _input.Player.MoveX.performed -= ctx => OnMoveX();
     }
 
     private void Update()
