@@ -1,15 +1,16 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Animator), typeof(ShootPoint))]
 public class Gun : MonoBehaviour
 {
-    [SerializeField] private ShootPoint _shootPoint;
-
-    private Shooting _shooting;
+    private ShootPoint _shootPoint;
     private Animator _animator;
+    private Shooting _shooting;
+    private int _duplicates;
 
     private void Awake()
     {
+        _shootPoint = GetComponent<ShootPoint>();
         _animator = GetComponent<Animator>();
         _shooting = GetComponentInParent<Shooting>();
         if (_shooting == null)
@@ -18,17 +19,31 @@ public class Gun : MonoBehaviour
 
     private void OnEnable()
     {
-        _shooting.GunsShooting += OnGunsShooting;
+        _duplicates = 1;
+        _shooting.Fire += OnFire;
     }
 
     private void OnDisable()
     {
-        _shooting.GunsShooting -= OnGunsShooting;
+        _shooting.Fire -= OnFire;
     }
 
-    private void OnGunsShooting()
+    public void IncreaseDuplicateByOne()
+    {
+        _duplicates++;
+    }
+
+    public void DecreaseDuplicateByOne()
+    {
+        _duplicates--;
+        if (_duplicates < 1)
+            gameObject.SetActive(false);
+    }
+
+    private void OnFire()
     {
         Bullet bullet = _shooting.BulletPool.GetFreeElement();
+        bullet.SetDuplicates(_duplicates);
         bullet.transform.position = _shootPoint.transform.position;
         _animator.SetTrigger(GunAnimator.Shoot);
     }

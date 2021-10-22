@@ -5,7 +5,8 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _lifetime;
-    [SerializeField] private int _duplicates;
+    
+    private int _duplicates;
 
     private void Update()
     {
@@ -31,7 +32,6 @@ public class Bullet : MonoBehaviour
     {
         _lifetime = lifetime;
     }
-
 
     private void OnTriggerEnter(Collider other)
     {

@@ -874,7 +874,6 @@ GameObject:
   - component: {fileID: 168212621}
   - component: {fileID: 168212622}
   - component: {fileID: 168212620}
-  - component: {fileID: 168212623}
   m_Layer: 0
   m_Name: MainCameraContainer
   m_TagString: Untagged
@@ -929,19 +928,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &168212623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 168212619}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 579a401231afb4f4dbdea8804eb39559, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _fInishAnimationBulletContainer: {fileID: 1412263499}
 --- !u!1 &177450506
 GameObject:
   m_ObjectHideFlags: 0
@@ -1441,7 +1427,6 @@ Transform:
   - {fileID: 1721626719}
   - {fileID: 667753065}
   - {fileID: 1715347510}
-  - {fileID: 1412263498}
   - {fileID: 456015532}
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -4820,7 +4805,7 @@ GameObject:
   - component: {fileID: 874094939}
   - component: {fileID: 874094938}
   m_Layer: 0
-  m_Name: GunsPointsContainer
+  m_Name: GunPointsContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4835,7 +4820,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 874094937}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1fd9bd9a378174409afc8a811d35c00, type: 3}
+  m_Script: {fileID: 11500000, guid: 50d02ed1b3b004540951a9c1e0c4b089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &874094939
@@ -5662,7 +5647,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1016535942}
-  - component: {fileID: 1016535947}
   - component: {fileID: 1016535946}
   - component: {fileID: 1016535949}
   - component: {fileID: 1016535944}
@@ -5670,7 +5654,7 @@ GameObject:
   - component: {fileID: 1016535943}
   - component: {fileID: 1016535945}
   - component: {fileID: 1016535948}
-  - component: {fileID: 1016535950}
+  - component: {fileID: 1016535947}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -5723,7 +5707,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bulletContainer: {fileID: 1721626718}
   _bulletTemplate: {fileID: 8545245205259403207, guid: d0c601abd034ca74596ad18859a47963, type: 3}
-  _poolCount: 2000
+  _poolCount: 400
   _shootingTimeDelta: 1
 --- !u!114 &1016535944
 MonoBehaviour:
@@ -5739,7 +5723,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gunsContainer: {fileID: 159956212}
   _gunTemplate: {fileID: 1158044792344720636, guid: c12b4d9fd470cbf45b7437fcae61221c, type: 3}
-  _poolCount: 1000
+  _poolCount: 200
 --- !u!114 &1016535945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5779,7 +5763,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.11
+  m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1016535948
 MonoBehaviour:
@@ -5816,26 +5800,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1016535950
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1016535940}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f4079e5248e67640b7d17e5122e5505, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _finishAnimationTracker: {fileID: 168212623}
-  _playerTracker: {fileID: 168212620}
-  _finishAnimationBulletContainer: {fileID: 1412263499}
-  _finishAnimationBulletTemplate: {fileID: -9168834233969661056, guid: 41fcc692016d602479a9e8bb1fcb0ac4, type: 3}
-  _poolCount: 300
-  _bulletSpeed: 15
-  _gunsPointsContainer: {fileID: 874094938}
-  _player: {fileID: 1016535944}
 --- !u!4 &1018626060 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 437880773646628275, guid: a614620dbb7aee44faeccadcb8900b5e, type: 3}
@@ -7801,50 +7765,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1976721629118169282, guid: bbfdf5db7064b704da06901558682854, type: 3}
   m_PrefabInstance: {fileID: 961040931}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1412263497
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1412263498}
-  - component: {fileID: 1412263499}
-  m_Layer: 0
-  m_Name: FInishAnimationBulletContainer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1412263498
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1412263497}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 287590678}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1412263499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1412263497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb7a58701f036ec4a8fc38e06a3d63c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _player: {fileID: 1016535944}
 --- !u!4 &1424871681 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 437880773646628275, guid: a614620dbb7aee44faeccadcb8900b5e, type: 3}
@@ -11347,7 +11267,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 517783505655325034, guid: 3f2ae25de90ff404f8bafe78f4748eaa, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 517783505655325034, guid: 3f2ae25de90ff404f8bafe78f4748eaa, type: 3}
       propertyPath: m_LocalPosition.x

@@ -32,13 +32,16 @@ public class PlayerCollisionHandler : MonoBehaviour
                 case '+':
                     _player.IncreaseGunsCountBy(changer.Value);
                     break;
+
                 case '-':
                     _player.DecreaseGunsCountBy(changer.Value);
                     break;
+
                 case '*':
                     int increaseValue = _player.GunsCount * (changer.Value - 1);
                     _player.IncreaseGunsCountBy(increaseValue);
                     break;
+
                 case '/':
                     int decreaseValue = _player.GunsCount - (_player.GunsCount / changer.Value);
                     _player.DecreaseGunsCountBy(decreaseValue);

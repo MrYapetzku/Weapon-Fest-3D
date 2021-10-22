@@ -15,5 +15,10 @@ public class GunsCountChangerSettings : ScriptableObject
     {
         if (_operation != '+' && _operation != '-' && _operation != '*' && _operation != '/')
             _operation = '+';
+
+        if (_value < 1)
+        {
+            _value = 1;
+        }
     }
 }

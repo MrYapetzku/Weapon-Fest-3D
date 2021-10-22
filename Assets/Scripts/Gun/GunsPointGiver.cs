@@ -13,6 +13,8 @@ public class GunsPointGiver : MonoBehaviour
     private List<GunPoint> _gunPoints;
     private int _pointIndex;
 
+    public int GunPointsCount => _gunPoints.Count;
+
     private void Awake()
     {
         _player = GetComponent<Player>();

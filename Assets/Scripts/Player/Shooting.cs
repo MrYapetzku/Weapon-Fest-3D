@@ -12,7 +12,7 @@ public class Shooting : MonoBehaviour
 
     private float _currentTime;
 
-    public event UnityAction GunsShooting;
+    public event UnityAction Fire;
 
     private void Awake()
     {
@@ -26,7 +26,7 @@ public class Shooting : MonoBehaviour
 
         if (_currentTime <= 0)
         {
-            GunsShooting?.Invoke();
+            Fire?.Invoke();
             _currentTime = _shootingTimeDelta;
         }
     }

@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class FinishedState : IGameState
 {
     private PlayerTracker _playerTracker;
@@ -12,7 +8,6 @@ public class FinishedState : IGameState
         _playerTracker = mainCameraContainer;
         _endLevelMenu = endLevelMenu;
     }
-
 
     public void Enter()
     {
