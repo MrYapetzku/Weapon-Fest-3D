@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,6 +9,9 @@ public class Player : MonoBehaviour
     [SerializeField] private GunsContainer _gunsContainer;
     [SerializeField] private Gun _gunTemplate;
     [SerializeField] private int _poolCount;
+
+    [SerializeField] private float _duplicateAnimationDuration;
+    [SerializeField] private int _duplicateAnimationGunsCount;
 
     private PoolMono<Gun> _gunsPool;
     private List<Gun> _playerVisibleGuns;
@@ -49,6 +53,8 @@ public class Player : MonoBehaviour
         for (int i = 0; i < value; i++)
             AddGun();
         PlayerGunsCountChanged?.Invoke(_playerGunsCount);
+        if (_playerGunsCount > _gunPointsCount)
+            StartCoroutine(PlayDuplicateGunAnimation());
     }
 
     public void DecreaseGunsCountBy(int value)
@@ -117,5 +123,20 @@ public class Player : MonoBehaviour
             if (_gunToDuplicateIndex == 0)
                 _gunToDuplicateIndex += _playerVisibleGuns.Count;
         }
+    }
+
+    private IEnumerator PlayDuplicateGunAnimation()
+    {
+        List<Gun> guns = new List<Gun>();
+
+        for (int i = 0; i < _duplicateAnimationGunsCount; i++)
+        {
+            guns.Add(_gunsPool.GetFreeElement());
+        }
+        yield return new WaitForSeconds(_duplicateAnimationDuration);
+
+        foreach (var gun in guns)
+            gun.gameObject.SetActive(false);
+        guns.Clear();
     }
 }

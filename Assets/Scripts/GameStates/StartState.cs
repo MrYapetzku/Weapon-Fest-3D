@@ -5,8 +5,9 @@ public class StartState : IGameState
 {
     private PlayerTracker _mainCameraContainer;
     private Player _player;
-    private MainMenu _mainMenu;
+    private Animator _playerAnimator;
     private Animator _cameraAnimator;
+    private MainMenu _mainMenu;
 
     public StartState(PlayerTracker mainCameraContainer, Player player, MainMenu mainMenu)
     {
@@ -14,7 +15,11 @@ public class StartState : IGameState
         _player = player;
         _mainMenu = mainMenu;
 
-        _cameraAnimator = _mainCameraContainer.GetComponent<Animator>();
+        _playerAnimator = player.GetComponent<Animator>();
+        if (_playerAnimator == null)
+            throw new Exception($"Player doesn't contain component {typeof(Animator)}");
+
+        _cameraAnimator = mainCameraContainer.GetComponent<Animator>();
         if (_cameraAnimator == null)
             throw new Exception($"Main camera container doesn't contain component {typeof(Animator)}");
     }
@@ -25,12 +30,17 @@ public class StartState : IGameState
         _cameraAnimator.SetTrigger(MainCameraAnimator.MainMenu);
         _player.transform.position = Vector3.zero;
         _player.ResetPlayerGunsCount();
+        _playerAnimator.SetTrigger(PlayerAnimator.Idle);
         _mainMenu.gameObject.SetActive(true);
+
+        _mainCameraContainer.GetComponent<PlayerTracker>().enabled = true;
+        _mainCameraContainer.GetComponent<FinalShotAnimationMove>().enabled = false;
     }
 
     public void Exit()
     {
         _cameraAnimator.ResetTrigger(MainCameraAnimator.MainMenu);
+        _playerAnimator.ResetTrigger(PlayerAnimator.Idle);
         _mainMenu.gameObject.SetActive(false);
     }
 }

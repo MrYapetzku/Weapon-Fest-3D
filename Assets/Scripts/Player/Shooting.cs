@@ -7,12 +7,14 @@ public class Shooting : MonoBehaviour
     [SerializeField] private Bullet _bulletTemplate;
     [SerializeField] private int _poolCount;
     [SerializeField] private float _shootingTimeDelta;
+    [SerializeField] private float _bulletLifeTime;
+    [SerializeField] private float _bulletLifeTimeForFinalFire;
 
     public PoolMono<Bullet> BulletPool;
 
     private float _currentTime;
 
-    public event UnityAction Fire;
+    public event UnityAction<float> Fire;
 
     private void Awake()
     {
@@ -26,8 +28,13 @@ public class Shooting : MonoBehaviour
 
         if (_currentTime <= 0)
         {
-            Fire?.Invoke();
+            Fire?.Invoke(_bulletLifeTime);
             _currentTime = _shootingTimeDelta;
         }
+    }
+
+    public void DoFinalFire()
+    {
+        Fire?.Invoke(_bulletLifeTimeForFinalFire);
     }
 }

@@ -40,10 +40,11 @@ public class Gun : MonoBehaviour
             gameObject.SetActive(false);
     }
 
-    private void OnFire()
+    private void OnFire(float bulletLifeTime)
     {
         Bullet bullet = _shooting.BulletPool.GetFreeElement();
         bullet.SetDuplicates(_duplicates);
+        bullet.SetLifetime(bulletLifeTime);
         bullet.transform.position = _shootPoint.transform.position;
         _animator.SetTrigger(GunAnimator.Shoot);
     }

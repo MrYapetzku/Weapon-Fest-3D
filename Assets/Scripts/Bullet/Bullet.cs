@@ -4,8 +4,8 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float _speed;
-    [SerializeField] private float _lifetime;
-    
+
+    private float _lifetime = 1.5f;
     private int _duplicates;
 
     private void Update()
@@ -47,8 +47,21 @@ public class Bullet : MonoBehaviour
 
     private IEnumerator LifeRoutine()
     {
-        yield return new WaitForSecondsRealtime(_lifetime);
+        yield return new WaitForSeconds(_lifetime);
 
         gameObject.SetActive(false);
     }
+
+
+    //private IEnumerator LifeRoutine()
+    //{
+    //    while (_lifetime > 0)
+    //    {
+    //        _lifetime -= Time.deltaTime;
+
+    //        yield return new WaitForEndOfFrame();
+    //    }
+
+    //    gameObject.SetActive(false);
+    //}
 }

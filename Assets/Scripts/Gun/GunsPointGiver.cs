@@ -8,6 +8,7 @@ public class GunsPointGiver : MonoBehaviour
     [SerializeField] private GunPoint _gunPointTemplate;
     [SerializeField] private int _maxGunsLayersInPlayer;
     [SerializeField] private float _distanceBetweenGuns;
+    [SerializeField] private float _positionFactorZ;
 
     private Player _player;
     private List<GunPoint> _gunPoints;
@@ -55,6 +56,7 @@ public class GunsPointGiver : MonoBehaviour
             {
                 float positionAngle = (180 * j) / (3 * i) * Mathf.Deg2Rad;
                 Vector3 position = new Vector3(Mathf.Cos(positionAngle), Mathf.Sin(positionAngle), 0) * _distanceBetweenGuns * i;
+                position += new Vector3(0, 0, Random.Range(-_positionFactorZ, _positionFactorZ));
 
                 SetPoint(position);
                 SetPoint(-position);

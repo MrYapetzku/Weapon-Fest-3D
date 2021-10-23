@@ -5,6 +5,7 @@ public class FinishingState : IGameState
 {
     private Animator _cameraAnimator;
     private Animator _playerAnimator;
+    private FinalShotBulletChecker _finalShotBulletChecker;
 
     public FinishingState(PlayerTracker mainCameraContainer, Player player)
     {
@@ -15,6 +16,10 @@ public class FinishingState : IGameState
         _playerAnimator = player.GetComponent<Animator>();
         if (_playerAnimator == null)
             throw new Exception($"Player doesn't contain component {typeof(Animator)}");
+
+        _finalShotBulletChecker = player.GetComponent<FinalShotBulletChecker>();
+        if (_finalShotBulletChecker == null)
+            throw new Exception($"Bullet container doesn't contain component {typeof(FinalShotBulletChecker)}");
     }
 
     public void Enter()
@@ -27,5 +32,6 @@ public class FinishingState : IGameState
     {
         _cameraAnimator.ResetTrigger(MainCameraAnimator.Finishing);
         _playerAnimator.ResetTrigger(PlayerAnimator.Finishing);
+        _finalShotBulletChecker.enabled = false;
     }
 }
