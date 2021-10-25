@@ -3,14 +3,16 @@ using UnityEngine;
 
 public class StartState : IGameState
 {
+    private LevelLoader _levelLoader;
     private PlayerTracker _mainCameraContainer;
     private Player _player;
     private Animator _playerAnimator;
     private Animator _cameraAnimator;
     private MainMenu _mainMenu;
 
-    public StartState(PlayerTracker mainCameraContainer, Player player, MainMenu mainMenu)
+    public StartState(LevelLoader levelLoader, PlayerTracker mainCameraContainer, Player player, MainMenu mainMenu)
     {
+        _levelLoader = levelLoader;
         _mainCameraContainer = mainCameraContainer;
         _player = player;
         _mainMenu = mainMenu;
@@ -26,6 +28,7 @@ public class StartState : IGameState
 
     public void Enter()
     {
+        _levelLoader.Load(0);
         _mainCameraContainer.transform.position = Vector3.zero;
         _cameraAnimator.SetTrigger(MainCameraAnimator.MainMenu);
         _player.transform.position = Vector3.zero;

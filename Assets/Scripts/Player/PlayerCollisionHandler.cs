@@ -27,6 +27,11 @@ public class PlayerCollisionHandler : MonoBehaviour
 
         if (changer)
         {
+            other.enabled = false;
+            var pairCollisionDisabler = other.GetComponentInParent<PairColliderDisabler>();
+            if (pairCollisionDisabler)
+                pairCollisionDisabler.DisablePairCollider();
+
             switch (changer.Operation)
             {
                 case '+':

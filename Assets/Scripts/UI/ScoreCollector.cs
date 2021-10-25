@@ -1,22 +1,17 @@
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class ScoreCollector : MonoBehaviour
 {
-    [SerializeField] private BalloonContainer _balloonContainer;
+    [SerializeField] private GameObjectsContainer _gameObjectsContainer;
     [SerializeField] private TMP_Text _collectedScoresText;
 
     private Balloon[] _balloons;
     private int _collectedScores;
 
-    private void Awake()
-    {
-        _balloons = _balloonContainer.GetComponentsInChildren<Balloon>();
-    }
-
     private void OnEnable()
     {
+        _balloons = _gameObjectsContainer.GetComponentsInChildren<Balloon>();
         foreach (var baloon in _balloons)
         {
             baloon.BalloonShot += OnBalloonShot;

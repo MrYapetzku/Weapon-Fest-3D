@@ -126,4 +126,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5babe39e685ffeb4c95a7f733c6e7537, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _chargesCount: 20
+  _durability: 50
+  _brokenMaterial: {fileID: 2100000, guid: cf77903240863bc4b910cc79b3feaae3, type: 2}

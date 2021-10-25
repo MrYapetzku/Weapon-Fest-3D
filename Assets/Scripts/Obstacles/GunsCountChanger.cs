@@ -12,6 +12,9 @@ public class GunsCountChanger : MonoBehaviour
     private void Awake()
     {
         var settings = Resources.LoadAll<GunsCountChangerSettings>("");
+        if (settings == null)
+            throw new System.Exception("Gun count changers resources didn't load.");
+
         int index = Random.Range(0, settings.Length);
 
         _meshRenderer.material = settings[index].Material;
