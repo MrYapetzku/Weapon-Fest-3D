@@ -10,7 +10,6 @@ public class Balloon : MonoBehaviour
 
     public int Damage => _damage;
 
-
     public void Deactivate()
     {
         gameObject.SetActive(false);
