@@ -127,4 +127,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _durability: 50
+  _scoreMultiplier: 0.2
   _brokenMaterial: {fileID: 2100000, guid: cf77903240863bc4b910cc79b3feaae3, type: 2}
