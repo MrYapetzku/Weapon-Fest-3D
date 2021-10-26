@@ -38,16 +38,24 @@ public class Bullet : MonoBehaviour
 
         if (balloon)
         {
-            balloon.Hit();
+            balloon.TakeBulletHit();
             _duplicates--;
+            CheckDublicates();
         }
 
         if (finalObstacle)
         {
-            finalObstacle.TakeBulletHit();
-            _duplicates--;
+            for (int i = 0; i < finalObstacle.Durability; i++)
+            {
+                finalObstacle.TakeBulletHit();
+                _duplicates--;
+                CheckDublicates();
+            }
         }
+    }
 
+    private void CheckDublicates()
+    {
         if (_duplicates < 1)
             gameObject.SetActive(false);
     }

@@ -10,14 +10,20 @@ public class Balloon : MonoBehaviour
 
     public int Damage => _damage;
 
-    public void Deactivate()
+
+    public void TakeBulletHit()
+    {
+        BalloonShot?.Invoke(_score);
+        Burst();
+    }
+
+    public void TakeOffGun()
     {
         gameObject.SetActive(false);
     }
 
-    public void Hit()
+    private void Burst()
     {
-        BalloonShot?.Invoke(_score);
         gameObject.SetActive(false);
     }
 }

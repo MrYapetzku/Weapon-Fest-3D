@@ -13,6 +13,8 @@ public class FinalObstacle : MonoBehaviour
 
     public event UnityAction<float> Broken;
 
+    public int Durability => _durability;
+
     private void Start()
     {
         _meshRenderer = GetComponent<MeshRenderer>();
@@ -23,9 +25,7 @@ public class FinalObstacle : MonoBehaviour
     {
         _durability--;
         if (_durability < 1)
-        {
             SetBrokenState();
-        }
     }
 
     private void SetBrokenState()

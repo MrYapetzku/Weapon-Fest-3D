@@ -21,7 +21,7 @@ public class PlayerCollisionHandler : MonoBehaviour
 
         if (balloon)
         {
-            balloon.Deactivate();
+            balloon.TakeOffGun();
             _player.DecreaseGunsCountBy(balloon.Damage);
         }
 

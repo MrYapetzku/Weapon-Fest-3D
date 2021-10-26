@@ -69,8 +69,8 @@ public class Player : MonoBehaviour
         }
         else
         {
-            ResetPlayerGunsCount();
             GameLoss?.Invoke();
+            ResetPlayerGunsCount();
         }
     }
 
