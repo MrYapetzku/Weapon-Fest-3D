@@ -567,7 +567,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""9df0a690-4117-4142-88a8-b52e7dec46a9"",
-                    ""path"": ""*/{Submit}"",
+                    ""path"": ""<Touchscreen>/press"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
