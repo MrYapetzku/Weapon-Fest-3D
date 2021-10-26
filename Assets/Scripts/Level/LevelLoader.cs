@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelLoader : MonoBehaviour
 {
@@ -9,12 +10,15 @@ public class LevelLoader : MonoBehaviour
     private LevelSettings[] _settings;
     private LevelEnvironment _loadedEnvironment;
     private LevelGameObjects _loadedLevelGameObjects;
+    private Image _backgroundImage;
 
     private void Awake()
     {
         _settings = Resources.LoadAll<LevelSettings>("");
         if (_settings == null)
             throw new System.Exception("Level settings resources didn't load.");
+
+        _backgroundImage = _background.GetComponent<Image>();
     }
 
     public void Load(int levelIndex)
@@ -30,5 +34,6 @@ public class LevelLoader : MonoBehaviour
 
         _loadedEnvironment = Instantiate(_settings[levelIndex].LevelEnvironment, _environmentContainer.transform);
         _loadedLevelGameObjects = Instantiate(_settings[levelIndex].LevelGameObjects, _gameObjectsContainer.transform);
+        _backgroundImage.sprite = _settings[levelIndex].Background;
     }
 }

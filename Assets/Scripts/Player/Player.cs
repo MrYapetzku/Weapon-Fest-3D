@@ -110,18 +110,18 @@ public class Player : MonoBehaviour
     {
         if (_playerGunsCount <= _playerVisibleGuns.Count)
         {
-            _playerGunsCount--;
             Gun gun = _playerVisibleGuns[_playerVisibleGuns.Count - 1];
             gun.gameObject.SetActive(false);
             _playerVisibleGuns.Remove(gun);
+            _playerGunsCount--;
         }
         else
         {
-            _playerGunsCount--;
-            _gunToDuplicateIndex--;
-            _playerVisibleGuns[_gunToDuplicateIndex].DecreaseDuplicateByOne();
             if (_gunToDuplicateIndex == 0)
                 _gunToDuplicateIndex += _playerVisibleGuns.Count;
+            _gunToDuplicateIndex--;
+            _playerVisibleGuns[_gunToDuplicateIndex].DecreaseDuplicateByOne();
+            _playerGunsCount--;
         }
     }
 

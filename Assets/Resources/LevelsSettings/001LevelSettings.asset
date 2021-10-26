@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e258845c47cf7c42afdc1b40403810f, type: 3}
   m_Name: 001LevelSettings
   m_EditorClassIdentifier: 
-  _background: {fileID: 2800000, guid: 1166714225b83eb499d676756bdf17fa, type: 3}
+  _background: {fileID: 21300000, guid: 1166714225b83eb499d676756bdf17fa, type: 3}
   _levelEnvironmentTemplate: {fileID: 4048803774329205465, guid: 69af126b42cd9444686279cdc28bab5e, type: 3}
   _levelGameObjectsTemplate: {fileID: 3230247159993210874, guid: 3517fc7e75ce9fc4da2452d834bae976, type: 3}
