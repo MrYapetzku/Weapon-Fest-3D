@@ -3,15 +3,15 @@ using UnityEngine;
 
 public class PlayState : IGameState
 {
-    private ScoreCollector _scoreCollector;
+    private ResultHandler _resultHandler;
     private Animator _cameraAnimator;
     private PlayerMover _playerMover;
     private Shooting _shooting;
     private GameMenu _gameMenu;
 
-    public PlayState(ScoreCollector scoreCollector, PlayerTracker mainCameraContainer, Player player, GameMenu gameMenu)
+    public PlayState(ResultHandler resultHandler, PlayerTracker mainCameraContainer, Player player, GameMenu gameMenu)
     {
-        _scoreCollector = scoreCollector;
+        _resultHandler = resultHandler;
         _cameraAnimator = mainCameraContainer.GetComponent<Animator>();
         if (_cameraAnimator == null)
             throw new Exception($"Main camera container doesn't contain component {typeof(Animator)}");
@@ -29,7 +29,7 @@ public class PlayState : IGameState
 
     public void Enter()
     {
-        _scoreCollector.enabled = true;
+        _resultHandler.enabled = true;
         _cameraAnimator.SetTrigger(MainCameraAnimator.Start);
         _playerMover.enabled = true;
         _shooting.enabled = true;

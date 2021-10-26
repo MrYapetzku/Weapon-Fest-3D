@@ -12,6 +12,8 @@ public class ProgressBar : MonoBehaviour
     private void OnEnable()
     {
         _finish = _gameObjectsContainer.GetComponentInChildren<FinishTrigger>();
+        if (_finish == null)
+            throw new System.Exception($"Level gameobjects prefab doesn't contain {typeof(FinishTrigger)}");
     }
 
     private void Update()

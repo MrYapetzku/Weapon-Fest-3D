@@ -3,13 +3,15 @@ using UnityEngine;
 
 public class FinishedState : IGameState
 {
+    private ResultHandler _resultHandler;
     private PlayerTracker _playerTracker;
     private EndLevelMenu _endLevelMenu;
     private Animator _cameraAnimator;
     private Animator _playerAnimator;
 
-    public FinishedState(PlayerTracker mainCameraContainer, Player player, EndLevelMenu endLevelMenu)
+    public FinishedState(ResultHandler resultHandler, PlayerTracker mainCameraContainer, Player player, EndLevelMenu endLevelMenu)
     {
+        _resultHandler = resultHandler;
         _playerTracker = mainCameraContainer;
         _endLevelMenu = endLevelMenu;
 
@@ -24,7 +26,9 @@ public class FinishedState : IGameState
 
     public void Enter()
     {
+        _resultHandler.Load();
         _endLevelMenu.gameObject.SetActive(true);
+        _resultHandler.Save();
         _playerTracker.GetComponent<FinalShotAnimationMove>().enabled = false;
         _cameraAnimator.SetTrigger(MainCameraAnimator.Finished);
         _playerAnimator.SetTrigger(PlayerAnimator.Idle);

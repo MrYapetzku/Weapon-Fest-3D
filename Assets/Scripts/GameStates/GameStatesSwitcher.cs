@@ -6,7 +6,7 @@ public class GameStatesSwitcher : MonoBehaviour
 {
     [SerializeField] private PlayerTracker _mainCameraContainer;
     [SerializeField] private LevelLoader _levelLoader;
-    [SerializeField] private ScoreCollector _scoreCollector;
+    [SerializeField] private ResultHandler _resultHandler;
     [SerializeField] private Player _player;
     [SerializeField] private MainMenu _mainMenu;
     [SerializeField] private GameMenu _gameMenu;
@@ -85,10 +85,10 @@ public class GameStatesSwitcher : MonoBehaviour
     {
         _statesMap = new Dictionary<Type, IGameState>();
 
-        _statesMap[typeof(StartState)] = new StartState(_levelLoader, _scoreCollector, _mainCameraContainer, _player, _mainMenu);
-        _statesMap[typeof(PlayState)] = new PlayState(_scoreCollector, _mainCameraContainer, _player, _gameMenu);
+        _statesMap[typeof(StartState)] = new StartState(_levelLoader, _resultHandler, _mainCameraContainer, _player, _mainMenu);
+        _statesMap[typeof(PlayState)] = new PlayState(_resultHandler, _mainCameraContainer, _player, _gameMenu);
         _statesMap[typeof(FinishingState)] = new FinishingState(_mainCameraContainer, _player);
-        _statesMap[typeof(FinishedState)] = new FinishedState(_mainCameraContainer, _player, _endLevelMenu);
+        _statesMap[typeof(FinishedState)] = new FinishedState(_resultHandler, _mainCameraContainer, _player, _endLevelMenu);
         _statesMap[typeof(GameLossState)] = new GameLossState(_gameLossMenu);
     }
 
