@@ -3,6 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(Animator), typeof(ShootPoint))]
 public class Gun : MonoBehaviour
 {
+    [SerializeField] private ParticleSystem _particleSystem;
+
     private ShootPoint _shootPoint;
     private Animator _animator;
     private Shooting _shooting;
@@ -47,5 +49,6 @@ public class Gun : MonoBehaviour
         bullet.SetLifetime(bulletLifeTime);
         bullet.transform.position = _shootPoint.transform.position;
         _animator.SetTrigger(GunAnimator.Shoot);
+        _particleSystem.Play();
     }
 }

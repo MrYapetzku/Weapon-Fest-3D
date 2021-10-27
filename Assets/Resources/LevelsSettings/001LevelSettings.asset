@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: 001LevelSettings
   m_EditorClassIdentifier: 
   _background: {fileID: 21300000, guid: 1166714225b83eb499d676756bdf17fa, type: 3}
-  _levelEnvironmentTemplate: {fileID: 4048803774329205465, guid: 69af126b42cd9444686279cdc28bab5e, type: 3}
-  _levelGameObjectsTemplate: {fileID: 3230247159993210874, guid: 3517fc7e75ce9fc4da2452d834bae976, type: 3}
+  _levelEnvironmentTemplate: {fileID: 4164431236081482499, guid: 69af126b42cd9444686279cdc28bab5e, type: 3}
+  _levelGameObjectsTemplate: {fileID: 2716367669196834003, guid: 3517fc7e75ce9fc4da2452d834bae976, type: 3}
+  _backgroundColor: {r: 0.78431374, g: 0.35686275, b: 0.27450982, a: 1}

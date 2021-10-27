@@ -40,8 +40,9 @@ public class EndLevelMenu : MonoBehaviour
             timer -= Time.deltaTime;
             if (timer <= 0)
                 timer = 0;
-            _currentGameScores = (int)Mathf.Lerp(0, startAnimationCurrentGameScores, timer / _addResultAnimationDuration);
-            _allScores = startAnimationAllScores + _currentGameScores;
+            var normalizedTimer = timer / _addResultAnimationDuration;
+            _currentGameScores = (int)Mathf.Lerp(0, startAnimationCurrentGameScores, normalizedTimer);
+            _allScores = (int)Mathf.Lerp(startAnimationAllScores + startAnimationCurrentGameScores, startAnimationAllScores, normalizedTimer);            
 
             ShowResult();
 

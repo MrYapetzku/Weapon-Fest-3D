@@ -35,5 +35,6 @@ public class LevelLoader : MonoBehaviour
         _loadedEnvironment = Instantiate(_settings[levelIndex].LevelEnvironment, _environmentContainer.transform);
         _loadedLevelGameObjects = Instantiate(_settings[levelIndex].LevelGameObjects, _gameObjectsContainer.transform);
         _backgroundImage.sprite = _settings[levelIndex].Background;
+        Camera.main.backgroundColor = _settings[levelIndex].BackgroundColor;
     }
 }
