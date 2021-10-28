@@ -32,7 +32,7 @@ public class PoolMono<T> where T : MonoBehaviour
         return createdObject;
     }
 
-    public bool HasFreeElement(out T element)
+    private bool HasFreeElement(out T element)
     {
         foreach (var mono in _pool)
         {

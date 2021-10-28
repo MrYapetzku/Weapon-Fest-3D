@@ -30,6 +30,7 @@ public class PlayState : IGameState
     public void Enter()
     {
         _resultHandler.enabled = true;
+        _resultHandler.Load();
         _cameraAnimator.SetTrigger(MainCameraAnimator.Start);
         _playerMover.enabled = true;
         _shooting.enabled = true;

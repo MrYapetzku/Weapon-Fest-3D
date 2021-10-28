@@ -63,7 +63,7 @@ public class ResultHandler : MonoBehaviour
     {
         _allCollectedScores += _currentGameScores;
         _gameData.Scores = _allCollectedScores;
-        _gameData.CurrentLevel = _currentLevel;
+        _gameData.CurrentLevel = ++_currentLevel;
         _storage.Save(_gameData);
     }
 

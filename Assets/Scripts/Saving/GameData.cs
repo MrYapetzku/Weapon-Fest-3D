@@ -9,6 +9,6 @@ public class GameData
     public GameData()
     {
         Scores = 0;
-        CurrentLevel = 0;
+        CurrentLevel = 1;
     }
 }
