@@ -30,23 +30,28 @@ public class StartState : IGameState
 
     public void Enter()
     {
-        _levelLoader.Load(0);
-        _resultHandler.enabled = false;
+        _resultHandler.ResultsLoaded += OnResultsLoaded;
+        _resultHandler.Load();
         _mainCameraContainer.transform.position = Vector3.zero;
         _cameraAnimator.SetTrigger(MainCameraAnimator.MainMenu);
         _player.transform.position = Vector3.zero;
         _player.ResetPlayerGunsCount();
         _playerAnimator.SetTrigger(PlayerAnimator.Idle);
         _mainMenu.gameObject.SetActive(true);
-
         _mainCameraContainer.GetComponent<PlayerTracker>().enabled = true;
         _mainCameraContainer.GetComponent<FinalShotAnimationMove>().enabled = false;
     }
 
     public void Exit()
     {
+        _resultHandler.ResultsLoaded -= OnResultsLoaded;
         _cameraAnimator.ResetTrigger(MainCameraAnimator.MainMenu);
         _playerAnimator.ResetTrigger(PlayerAnimator.Idle);
         _mainMenu.gameObject.SetActive(false);
+    }
+
+    private void OnResultsLoaded()
+    {
+        _levelLoader.Load(_resultHandler.CurrentLevel);
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ResultHandler : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class ResultHandler : MonoBehaviour
     private GameData _gameData;
     private Storage _storage;
 
+    public event UnityAction ResultsLoaded;
+
     public int CurrentGameScores => _currentGameScores;
     public int AllCollectedScores => _allCollectedScores;
     public int CurrentLevel => _currentLevel;
@@ -21,8 +24,6 @@ public class ResultHandler : MonoBehaviour
     private void Awake()
     {
         _balloons = new Balloon[0];
-        _storage = new Storage();
-        _gameData = new GameData();
     }
 
     private void OnEnable()
@@ -30,7 +31,7 @@ public class ResultHandler : MonoBehaviour
         _currentGameScores = 0;
         _currentScoreMultiplier = 1;
 
-    _balloons = _gameObjectsContainer.GetComponentsInChildren<Balloon>();
+        _balloons = _gameObjectsContainer.GetComponentsInChildren<Balloon>();
         foreach (var baloon in _balloons)
             baloon.BalloonShot += OnBalloonShot;
 
@@ -69,8 +70,12 @@ public class ResultHandler : MonoBehaviour
 
     public void Load()
     {
+        if (_storage == null)
+            _storage = new Storage();
+
         _gameData = (GameData)_storage.Load(new GameData());
         _allCollectedScores = _gameData.Scores;
         _currentLevel = _gameData.CurrentLevel;
+        ResultsLoaded?.Invoke();
     }
 }

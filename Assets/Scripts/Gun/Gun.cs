@@ -42,11 +42,12 @@ public class Gun : MonoBehaviour
             gameObject.SetActive(false);
     }
 
-    private void OnFire(float bulletLifeTime)
+    private void OnFire(bool isFinalFire)
     {
         Bullet bullet = _shooting.BulletPool.GetFreeElement();
         bullet.SetDuplicates(_duplicates);
-        bullet.SetLifetime(bulletLifeTime);
+        if (isFinalFire)
+            bullet.SetFinalShotSettings();
         bullet.transform.position = _shootPoint.transform.position;
         _animator.SetTrigger(GunAnimator.Shoot);
         _particleSystem.Play();

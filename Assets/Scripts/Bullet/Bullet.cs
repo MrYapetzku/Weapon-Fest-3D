@@ -1,24 +1,32 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private float _speed;
+    [SerializeField] private float _defaultSpeed;
     [SerializeField] private float _defaultLifetime;
+    [SerializeField] private float _finalShotSpeed;
+    [SerializeField] private float _finalShotLifetime;
 
+    private Rigidbody _rigidbody;
+    private float _lifeTime;
     private int _duplicates;
-    private float _timer;
+
+    private void Awake()
+    {
+        _rigidbody = GetComponent<Rigidbody>();
+    }
 
     private void Update()
     {
-        transform.Translate(Vector3.forward * _speed * Time.deltaTime);
-        _timer -= Time.deltaTime;
-        if (_timer <= 0)
+        _lifeTime -= Time.deltaTime;
+        if (_lifeTime <= 0)
             gameObject.SetActive(false);
     }
 
     private void OnEnable()
     {
-        _timer = _defaultLifetime;
+        SetDefaultSettings();
     }
 
     public void SetDuplicates(int count)
@@ -26,9 +34,16 @@ public class Bullet : MonoBehaviour
         _duplicates = count;
     }
 
-    public void SetLifetime(float lifetime)
+    public void SetFinalShotSettings()
     {
-        _timer = lifetime;
+        _lifeTime = _finalShotLifetime;
+        _rigidbody.velocity = Vector3.forward * _finalShotSpeed;
+    }
+
+    private void SetDefaultSettings()
+    {
+        _lifeTime = _defaultLifetime;
+        _rigidbody.velocity = Vector3.forward * _defaultSpeed;
     }
 
     private void OnTriggerEnter(Collider other)

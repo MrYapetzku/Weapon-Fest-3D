@@ -26,7 +26,6 @@ public class FinishedState : IGameState
 
     public void Enter()
     {
-        _resultHandler.Load();
         _endLevelMenu.gameObject.SetActive(true);
         _resultHandler.Save();
         _playerTracker.GetComponent<FinalShotAnimationMove>().enabled = false;

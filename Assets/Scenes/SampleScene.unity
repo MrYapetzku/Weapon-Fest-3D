@@ -806,7 +806,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e26bff00afd51342921760e5af82ac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 30
+  _speed: 20
 --- !u!1 &177450506
 GameObject:
   m_ObjectHideFlags: 0
@@ -1809,11 +1809,11 @@ MonoBehaviour:
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
   m_ActionsAsset: {fileID: -944628639613478452, guid: 3b63e5fc7e95d324ea1e9d8a13b1cec7, type: 3}
-  m_PointAction: {fileID: -6468293877346635282, guid: 3b63e5fc7e95d324ea1e9d8a13b1cec7, type: 3}
+  m_PointAction: {fileID: 2860097635951575574, guid: 3b63e5fc7e95d324ea1e9d8a13b1cec7, type: 3}
   m_MoveAction: {fileID: -2022939478537883545, guid: 3b63e5fc7e95d324ea1e9d8a13b1cec7, type: 3}
-  m_SubmitAction: {fileID: -2861178253364065787, guid: 3b63e5fc7e95d324ea1e9d8a13b1cec7, type: 3}
+  m_SubmitAction: {fileID: 0}
   m_CancelAction: {fileID: 7432791203761281308, guid: 3b63e5fc7e95d324ea1e9d8a13b1cec7, type: 3}
-  m_LeftClickAction: {fileID: 1972466948118458100, guid: 3b63e5fc7e95d324ea1e9d8a13b1cec7, type: 3}
+  m_LeftClickAction: {fileID: 998759216845936671, guid: 3b63e5fc7e95d324ea1e9d8a13b1cec7, type: 3}
   m_MiddleClickAction: {fileID: -8555818632406199582, guid: 3b63e5fc7e95d324ea1e9d8a13b1cec7, type: 3}
   m_RightClickAction: {fileID: -1594950855198348053, guid: 3b63e5fc7e95d324ea1e9d8a13b1cec7, type: 3}
   m_ScrollWheelAction: {fileID: 4409992517327207879, guid: 3b63e5fc7e95d324ea1e9d8a13b1cec7, type: 3}
@@ -2539,8 +2539,6 @@ MonoBehaviour:
   _bulletTemplate: {fileID: 8545245205259403207, guid: d0c601abd034ca74596ad18859a47963, type: 3}
   _poolCount: 400
   _shootingTimeDelta: 1
-  _bulletLifeTime: 0.6
-  _bulletLifeTimeForFinalFire: 10
 --- !u!114 &1016535944
 MonoBehaviour:
   m_ObjectHideFlags: 0

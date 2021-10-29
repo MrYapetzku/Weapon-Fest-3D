@@ -21,9 +21,14 @@ public class LevelLoader : MonoBehaviour
         _backgroundImage = _background.GetComponent<Image>();
     }
 
-    public void Load(int levelIndex)
+    public void Load(int levelNuber)
     {
-        if (levelIndex < 0 && levelIndex > _settings.Length)
+        if (levelNuber > _settings.Length)
+            levelNuber = _settings.Length;
+
+        int levelIndex = levelNuber - 1;
+
+        if (levelIndex < 0 || levelIndex >= _settings.Length)
             throw new System.Exception("Invalid level settings index.");
 
         if (_loadedEnvironment)
