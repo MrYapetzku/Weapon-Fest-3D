@@ -50,7 +50,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        var balloon = other.GetComponentInParent<Balloon>();
+        var balloon = other.GetComponent<Balloon>();
         var finalObstacle = other.GetComponentInParent<FinalObstacle>();
 
         if (balloon)

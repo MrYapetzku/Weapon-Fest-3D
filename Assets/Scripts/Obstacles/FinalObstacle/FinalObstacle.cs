@@ -61,6 +61,5 @@ public class FinalObstacle : MonoBehaviour
         _collider.enabled = false;
         _meshRenderer.material = _brokenMaterial;
         Broken?.Invoke(_scoreMultiplier);
-        Debug.Log("hfc");
     }
 }

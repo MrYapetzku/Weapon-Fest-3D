@@ -4879,7 +4879,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4192426559575353421}
-  - component: {fileID: 5405344410065170509}
   m_Layer: 0
   m_Name: Visualisation
   m_TagString: Untagged
@@ -4905,19 +4904,6 @@ Transform:
   m_Father: {fileID: 1976721629118169282}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &5405344410065170509
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2835718118499718947}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.2
-  m_Center: {x: 0, y: 0.57, z: 0}
 --- !u!1 &3665107614822673220
 GameObject:
   m_ObjectHideFlags: 0
@@ -4927,8 +4913,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1976721629118169282}
-  - component: {fileID: 7022095752215442944}
+  - component: {fileID: 7420619659812141195}
   - component: {fileID: -4305948441527555210}
+  - component: {fileID: 7022095752215442944}
   m_Layer: 0
   m_Name: Balloon
   m_TagString: Untagged
@@ -4952,22 +4939,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7022095752215442944
-MonoBehaviour:
+--- !u!135 &7420619659812141195
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3665107614822673220}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0b38a104c5084d4fb916125096849cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _damage: 1
-  _score: 10
-  _animator: {fileID: -4305948441527555210}
-  _particleSystem: {fileID: 4146918238991973848}
+  serializedVersion: 2
+  m_Radius: 0.2
+  m_Center: {x: 0, y: 0.57, z: 0}
 --- !u!95 &-4305948441527555210
 Animator:
   serializedVersion: 4
@@ -4988,6 +4972,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7022095752215442944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3665107614822673220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0b38a104c5084d4fb916125096849cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 1
+  _score: 10
+  _animator: {fileID: -4305948441527555210}
+  _particleSystem: {fileID: 4146918238991973848}
 --- !u!1 &4301712288421866738
 GameObject:
   m_ObjectHideFlags: 0

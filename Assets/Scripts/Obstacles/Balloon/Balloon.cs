@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Animator), typeof(SphereCollider))]
 public class Balloon : MonoBehaviour
 {
     [SerializeField] private int _damage;
@@ -9,12 +9,20 @@ public class Balloon : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private ParticleSystem _particleSystem;
 
+    private Collider _collider;
+
     public event UnityAction<int> BalloonShot;
 
     public int Damage => _damage;
 
+    private void Awake()
+    {
+        _collider = GetComponent<SphereCollider>();
+    }
+
     public void TakeBulletHit()
     {
+        _collider.enabled = false;
         BalloonShot?.Invoke(_score);
         Burst();
     }
