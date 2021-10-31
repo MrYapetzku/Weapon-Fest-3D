@@ -443,10 +443,10 @@ RectTransform:
   m_Father: {fileID: 1519168570}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 570}
-  m_SizeDelta: {x: 1200, y: 500}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -1056}
+  m_SizeDelta: {x: 1274.2915, y: 675.1162}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &94505249
 MonoBehaviour:
@@ -495,7 +495,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 198.25
+  m_fontSize: 200
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -531,7 +531,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -34.96399, y: 0, z: -27.971313, w: -104.891846}
+  m_margin: {x: 2.1818237, y: 0, z: 1.2148438, w: -1.4139404}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -861,6 +861,7 @@ GameObject:
   m_Component:
   - component: {fileID: 226392350}
   - component: {fileID: 226392351}
+  - component: {fileID: 226392352}
   m_Layer: 0
   m_Name: PlayerCollider
   m_TagString: Untagged
@@ -896,6 +897,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &226392352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226392349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50fc12c6a3124b34faba21471eb0c57e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &231067544
 GameObject:
   m_ObjectHideFlags: 0
@@ -2504,6 +2517,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 5
   _roadWidth: 3
+  _sensetivity: 0.008
 --- !u!4 &1016535942
 Transform:
   m_ObjectHideFlags: 0

@@ -12,6 +12,8 @@ public class Bullet : MonoBehaviour
     private float _lifeTime;
     private int _duplicates;
 
+    public float FinalShootSpeed => _finalShotSpeed;
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -60,12 +62,8 @@ public class Bullet : MonoBehaviour
 
         if (finalObstacle)
         {
-            for (int i = 0; i < finalObstacle.Durability; i++)
-            {
-                finalObstacle.TakeBulletHit();
-                _duplicates--;
-                CheckDublicates();
-            }
+            _duplicates = finalObstacle.TakeBulletHitAndReturnExcess(_duplicates);
+            CheckDublicates();
         }
     }
 

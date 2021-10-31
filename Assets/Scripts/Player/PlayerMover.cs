@@ -4,9 +4,10 @@ public class PlayerMover : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _roadWidth;
+    [SerializeField][Range(0, 0.01f)] private float _sensetivity;
 
     private PlayerInput _input;
-    private float _screenTouchPositionX;
+    private float _screenTouchDeltaX;
 
     private void Awake()
     {
@@ -28,13 +29,13 @@ public class PlayerMover : MonoBehaviour
     private void Update()
     {
         transform.position += Vector3.forward * _speed * Time.deltaTime;
-        _screenTouchPositionX = _input.Player.MoveX.ReadValue<float>();
+        _screenTouchDeltaX = _input.Player.MoveX.ReadValue<float>();
     }
 
     public void OnMoveX()
     {
-        var screenTouchPositionXNormalized = Mathf.Clamp(_screenTouchPositionX, 0, Camera.main.scaledPixelWidth) / Camera.main.scaledPixelWidth;
+        float targetPositionX = Mathf.Clamp(transform.position.x + (_screenTouchDeltaX * _sensetivity), -_roadWidth / 2, _roadWidth / 2);
 
-        transform.position = new Vector3((screenTouchPositionXNormalized - 0.5f) * _roadWidth, 0, transform.position.z);
+        transform.position = new Vector3(targetPositionX, 0, transform.position.z);
     }
 }

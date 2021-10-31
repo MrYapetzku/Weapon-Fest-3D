@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class FinalShotAnimationMove : MonoBehaviour
 {
-    [SerializeField] private float _speed;
+    [SerializeField] private Bullet _bulletPrefab;
 
     private void Update()
     {
-        transform.Translate(Vector3.forward * _speed * Time.deltaTime);
+        transform.Translate(Vector3.forward * _bulletPrefab.FinalShootSpeed * Time.deltaTime);
     }
 }

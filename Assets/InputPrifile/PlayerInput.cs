@@ -31,7 +31,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""name"": ""MoveX"",
                     ""type"": ""Value"",
                     ""id"": ""ba24c2f6-7984-412e-b681-6d25ef145ae4"",
-                    ""expectedControlType"": ""Axis"",
+                    ""expectedControlType"": ""Integer"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -41,7 +41,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""0a7a971f-b0e7-447e-b252-f1ad9ddbac79"",
-                    ""path"": ""<Mouse>/position/x"",
+                    ""path"": ""<Mouse>/delta/x"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Mouse"",
@@ -52,7 +52,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""b3e0fb8c-d1c3-4ee5-b71d-ce31d4b05390"",
-                    ""path"": ""<Touchscreen>/primaryTouch/position/x"",
+                    ""path"": ""<Touchscreen>/delta/x"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""TouchScreen"",
