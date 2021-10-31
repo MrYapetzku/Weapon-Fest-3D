@@ -24,7 +24,7 @@ public class Balloon : MonoBehaviour
         _animator.SetTrigger(BalloonAnimator.TakeOffGun);
     }
 
-    private void Burst()
+    public void Burst()
     {
         _animator.SetTrigger(BalloonAnimator.Burst);
         _particleSystem.Play();

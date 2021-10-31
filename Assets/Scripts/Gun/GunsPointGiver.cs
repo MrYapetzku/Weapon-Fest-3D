@@ -12,14 +12,17 @@ public class GunsPointGiver : MonoBehaviour
 
     private Player _player;
     private List<GunPoint> _gunPoints;
+    private List<int> _pointCountsInLayers;
     private int _pointIndex;
 
     public int GunPointsCount => _gunPoints.Count;
+    public float DistanceBetweenGuns => _distanceBetweenGuns;
 
     private void Awake()
     {
         _player = GetComponent<Player>();
         _gunPoints = new List<GunPoint>();
+        _pointCountsInLayers = new List<int>();
         _pointIndex = 0;
         GenerateGunPoints();
         _player.enabled = true;
@@ -46,6 +49,14 @@ public class GunsPointGiver : MonoBehaviour
             _pointIndex = _gunPoints.Count - 1;
     }
 
+    public List<int> GetPointCountsInLayers()
+    {
+        List<int> pointsCounts = new List<int>();
+        foreach (var count in _pointCountsInLayers)
+            pointsCounts.Add(count);
+        return pointsCounts;
+    }
+
     private void GenerateGunPoints()
     {
         SetPoint(Vector3.zero);
@@ -61,6 +72,7 @@ public class GunsPointGiver : MonoBehaviour
                 SetPoint(position);
                 SetPoint(-position);
             }
+            _pointCountsInLayers.Add(_gunPoints.Count);
         }
     }
 

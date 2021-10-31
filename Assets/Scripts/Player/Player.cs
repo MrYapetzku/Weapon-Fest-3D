@@ -93,7 +93,8 @@ public class Player : MonoBehaviour
     {
         if (_playerVisibleGuns.Count < _gunPointsCount)
         {
-            _playerVisibleGuns.Add(_gunsPool.GetFreeElement());
+            Gun gun = _gunsPool.GetFreeElement();
+            _playerVisibleGuns.Add(gun);
             _playerGunsCount++;
         }
         else

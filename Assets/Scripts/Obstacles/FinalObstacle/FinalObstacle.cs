@@ -9,7 +9,7 @@ public class FinalObstacle : MonoBehaviour
 
     private MeshRenderer _meshRenderer;
     private Collider _collider;
-    private Animator[] _balloonAnimators;
+    private Balloon[] _balloons;
     private float _discreteDurablity;
     private int _discreteDurablityStep;
     private int _burstBalloonIndex;
@@ -22,8 +22,8 @@ public class FinalObstacle : MonoBehaviour
     {
         _meshRenderer = GetComponentInChildren<MeshRenderer>();
         _collider = GetComponentInChildren<BoxCollider>();
-        _balloonAnimators = GetComponentsInChildren<Animator>();
-        _discreteDurablityStep = _durability / _balloonAnimators.Length;
+        _balloons = GetComponentsInChildren<Balloon>();
+        _discreteDurablityStep = _durability / _balloons.Length;
         _discreteDurablity = _durability - _discreteDurablityStep;
         _burstBalloonIndex = 0;
     }
@@ -50,7 +50,7 @@ public class FinalObstacle : MonoBehaviour
     {
         while (_durability < _discreteDurablity && _burstBalloonIndex >= 0)
         {
-            _balloonAnimators[_burstBalloonIndex].SetTrigger(BalloonAnimator.Burst);
+            _balloons[_burstBalloonIndex].Burst();
             _burstBalloonIndex++;
             _discreteDurablity -= _discreteDurablityStep;
         }
@@ -61,5 +61,6 @@ public class FinalObstacle : MonoBehaviour
         _collider.enabled = false;
         _meshRenderer.material = _brokenMaterial;
         Broken?.Invoke(_scoreMultiplier);
+        Debug.Log("hfc");
     }
 }
