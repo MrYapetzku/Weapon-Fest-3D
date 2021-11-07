@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 
+#if UNITY_EDITOR
 [ExecuteAlways]
 [SelectionBase]
 public class RepeatedObject : MonoBehaviour
@@ -54,3 +55,4 @@ public class RepeatedObject : MonoBehaviour
         }
     }
 }
+#endif
