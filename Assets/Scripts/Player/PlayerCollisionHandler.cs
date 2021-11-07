@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Player))]
 public class PlayerCollisionHandler : MonoBehaviour
@@ -42,12 +42,12 @@ public class PlayerCollisionHandler : MonoBehaviour
                     _player.DecreaseGunsCountBy(changer.Value);
                     break;
 
-                case '*':
+                case 'x':
                     int increaseValue = _player.GunsCount * (changer.Value - 1);
                     _player.IncreaseGunsCountBy(increaseValue);
                     break;
 
-                case '/':
+                case '÷':
                     int decreaseValue = _player.GunsCount - (_player.GunsCount / changer.Value);
                     _player.DecreaseGunsCountBy(decreaseValue);
                     break;

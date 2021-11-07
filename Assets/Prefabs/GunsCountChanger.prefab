@@ -29,6 +29,7 @@ Transform:
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.2, y: 1, z: 0.2}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 437880773534257793}
   m_RootOrder: 0
@@ -126,6 +127,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.1}
   m_LocalScale: {x: 0.01, y: 0.01, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 437880773474747340}
   m_Father: {fileID: 437880773646628275}
@@ -225,6 +227,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 437880773317197712}
   m_RootOrder: 0
@@ -262,10 +265,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: +10
+  m_text: "\xF710"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a518c1f4d548f2c4aa4eb97360e20534, type: 2}
-  m_sharedMaterial: {fileID: 1022614666501514542, guid: a518c1f4d548f2c4aa4eb97360e20534, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e6e3cfed0b5f8c44aa038906444f1d0e, type: 2}
+  m_sharedMaterial: {fileID: -7154396200923171980, guid: e6e3cfed0b5f8c44aa038906444f1d0e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -357,6 +360,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 437880772975882514}
   m_Father: {fileID: 437880773646628275}
@@ -389,6 +393,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 437880773534257793}
   - {fileID: 437880773317197712}

@@ -1,10 +1,10 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewGunsCountChangerSettings", menuName = "Obstacle Resources/Guns Count Changer Settings")]
 public class GunsCountChangerSettings : ScriptableObject
 {
     [SerializeField] private char _operation;
-    [SerializeField] private int _value;
+    [SerializeField][Min(1)] private int _value;
     [SerializeField] private Material _material;
 
     public char Operation => _operation;
@@ -13,12 +13,13 @@ public class GunsCountChangerSettings : ScriptableObject
 
     private void OnValidate()
     {
-        if (_operation != '+' && _operation != '-' && _operation != '*' && _operation != '/')
-            _operation = '+';
+        if (_operation == '*')
+            _operation = 'x';
 
-        if (_value < 1)
-        {
-            _value = 1;
-        }
+        if (_operation == '/')
+            _operation = '÷';
+
+        if (_operation != '+' && _operation != '-' && _operation != 'x' && _operation != '÷')
+            _operation = '+';
     }
 }
