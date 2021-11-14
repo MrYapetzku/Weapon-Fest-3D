@@ -1,24 +1,20 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class LevelLoader : MonoBehaviour
 {
-    [SerializeField] private Background _background;
     [SerializeField] private EnvironmentContainer _environmentContainer;
     [SerializeField] private GameObjectsContainer _gameObjectsContainer;
+    [SerializeField] private GameSoundsPlayer _soundSource;
 
     private LevelSettings[] _settings;
     private LevelEnvironment _loadedEnvironment;
     private LevelGameObjects _loadedLevelGameObjects;
-    private Image _backgroundImage;
 
     private void Awake()
     {
         _settings = Resources.LoadAll<LevelSettings>("");
         if (_settings == null)
             throw new System.Exception("Level settings resources didn't load.");
-
-        _backgroundImage = _background.GetComponent<Image>();
     }
 
     public void Load(int levelNuber)
@@ -31,15 +27,19 @@ public class LevelLoader : MonoBehaviour
         if (levelIndex < 0 || levelIndex >= _settings.Length)
             throw new System.Exception("Invalid level settings index.");
 
+
         if (_loadedEnvironment)
             Destroy(_loadedEnvironment.gameObject);
 
         if (_loadedLevelGameObjects)
+        {
+            _soundSource.Release();
             Destroy(_loadedLevelGameObjects.gameObject);
+        }
 
+        RenderSettings.skybox = _settings[levelIndex].SkyBoxMaterial;
         _loadedEnvironment = Instantiate(_settings[levelIndex].LevelEnvironment, _environmentContainer.transform);
         _loadedLevelGameObjects = Instantiate(_settings[levelIndex].LevelGameObjects, _gameObjectsContainer.transform);
-        _backgroundImage.sprite = _settings[levelIndex].Background;
-        Camera.main.backgroundColor = _settings[levelIndex].BackgroundColor;
+        _soundSource.Init();
     }
 }

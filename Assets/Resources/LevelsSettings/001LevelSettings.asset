@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e258845c47cf7c42afdc1b40403810f, type: 3}
   m_Name: 001LevelSettings
   m_EditorClassIdentifier: 
-  _background: {fileID: 21300000, guid: 1166714225b83eb499d676756bdf17fa, type: 3}
+  _skyBoxMaterial: {fileID: 2100000, guid: 3919d8bcabe3b9545ab7db03699e4baf, type: 2}
   _levelEnvironmentTemplate: {fileID: 4164431236081482499, guid: 69af126b42cd9444686279cdc28bab5e, type: 3}
   _levelGameObjectsTemplate: {fileID: 2716367669196834003, guid: 3517fc7e75ce9fc4da2452d834bae976, type: 3}
-  _backgroundColor: {r: 0.78431374, g: 0.35686275, b: 0.27450982, a: 1}
