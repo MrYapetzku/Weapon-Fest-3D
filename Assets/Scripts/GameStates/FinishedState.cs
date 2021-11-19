@@ -8,6 +8,7 @@ public class FinishedState : IGameState
     private EndLevelMenu _endLevelMenu;
     private Animator _cameraAnimator;
     private Animator _playerAnimator;
+    private Wind_FX _wind_FX;
 
     public FinishedState(ResultHandler resultHandler, PlayerTracker mainCameraContainer, Player player, EndLevelMenu endLevelMenu)
     {
@@ -22,6 +23,10 @@ public class FinishedState : IGameState
         _playerAnimator = player.GetComponent<Animator>();
         if (_playerAnimator == null)
             throw new Exception($"Player doesn't contain component {typeof(Animator)}");
+
+        _wind_FX = mainCameraContainer.GetComponentInChildren<Wind_FX>();
+        if (_wind_FX == null)
+            throw new Exception($"Main cameras children doesn't contain component {typeof(Wind_FX)}");
     }
 
     public void Enter()
@@ -39,5 +44,6 @@ public class FinishedState : IGameState
         _endLevelMenu.gameObject.SetActive(false);
         _cameraAnimator.ResetTrigger(MainCameraAnimator.Finished);
         _playerAnimator.ResetTrigger(PlayerAnimator.Idle);
+        _wind_FX.gameObject.SetActive(false);
     }
 }

@@ -33,7 +33,7 @@ public class StartState : IGameState
         _resultHandler.ResultsLoaded += OnResultsLoaded;
         _resultHandler.Load();
         _mainCameraContainer.transform.position = Vector3.zero;
-        _cameraAnimator.SetTrigger(MainCameraAnimator.MainMenu);
+        _cameraAnimator.SetTrigger(MainCameraAnimator.Reset);
         _player.transform.position = Vector3.zero;
         _player.ResetPlayerGunsCount();
         _playerAnimator.SetTrigger(PlayerAnimator.Idle);
@@ -45,7 +45,7 @@ public class StartState : IGameState
     public void Exit()
     {
         _resultHandler.ResultsLoaded -= OnResultsLoaded;
-        _cameraAnimator.ResetTrigger(MainCameraAnimator.MainMenu);
+        _cameraAnimator.ResetTrigger(MainCameraAnimator.Reset);
         _playerAnimator.ResetTrigger(PlayerAnimator.Idle);
         _mainMenu.gameObject.SetActive(false);
     }

@@ -12,6 +12,12 @@ public class BulletBlocker : MonoBehaviour
         Bullet bullet = other.GetComponentInParent<Bullet>();
         if (bullet)
         {
+            if (bullet.IsFinalFire)
+            {
+                gameObject.SetActive(false);
+                return;
+            }
+
             bullet.gameObject.SetActive(false);
         }
     }

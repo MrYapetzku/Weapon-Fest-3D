@@ -13,6 +13,7 @@ public class Bullet : MonoBehaviour
     private int _duplicates;
 
     public float FinalShootSpeed => _finalShotSpeed;
+    public bool IsFinalFire { get; private set; }
 
     private void Awake()
     {
@@ -40,12 +41,14 @@ public class Bullet : MonoBehaviour
     {
         _lifeTime = _finalShotLifetime;
         _rigidbody.velocity = Vector3.forward * _finalShotSpeed;
+        IsFinalFire = true;
     }
 
     private void SetDefaultSettings()
     {
         _lifeTime = _defaultLifetime;
         _rigidbody.velocity = Vector3.forward * _defaultSpeed;
+        IsFinalFire = false;
     }
 
     private void OnTriggerEnter(Collider other)

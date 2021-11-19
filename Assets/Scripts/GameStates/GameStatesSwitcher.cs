@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class GameStatesSwitcher : MonoBehaviour
 {
+    [Header("Game components")]
     [SerializeField] private PlayerTracker _mainCameraContainer;
     [SerializeField] private LevelLoader _levelLoader;
     [SerializeField] private ResultHandler _resultHandler;
     [SerializeField] private Player _player;
+    [Header("UI")]
     [SerializeField] private MainMenu _mainMenu;
     [SerializeField] private GameMenu _gameMenu;
     [SerializeField] private EndLevelMenu _endLevelMenu;
@@ -89,7 +91,7 @@ public class GameStatesSwitcher : MonoBehaviour
         _statesMap[typeof(PlayState)] = new PlayState(_resultHandler, _mainCameraContainer, _player, _gameMenu);
         _statesMap[typeof(FinishingState)] = new FinishingState(_resultHandler, _mainCameraContainer, _player);
         _statesMap[typeof(FinishedState)] = new FinishedState(_resultHandler, _mainCameraContainer, _player, _endLevelMenu);
-        _statesMap[typeof(GameLossState)] = new GameLossState(_resultHandler, _player, _gameLossMenu);
+        _statesMap[typeof(GameLossState)] = new GameLossState(_resultHandler, _mainCameraContainer, _player, _gameLossMenu);
     }
 
     private void SetState(IGameState newState)

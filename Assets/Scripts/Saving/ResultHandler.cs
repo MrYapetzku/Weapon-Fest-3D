@@ -37,7 +37,7 @@ public class ResultHandler : MonoBehaviour
 
         _finalObstacles = _gameObjectsContainer.GetComponentsInChildren<FinalObstacle>();
         foreach (var obstacle in _finalObstacles)
-            obstacle.Broken += OnBroken;
+            obstacle.Hiteted += OnBroken;
     }
 
     private void OnDisable()
@@ -47,7 +47,7 @@ public class ResultHandler : MonoBehaviour
             baloon.BalloonShot -= OnBalloonShot;
 
         foreach (var obstacle in _finalObstacles)
-            obstacle.Broken -= OnBroken;
+            obstacle.Hiteted -= OnBroken;
         
     }
 
