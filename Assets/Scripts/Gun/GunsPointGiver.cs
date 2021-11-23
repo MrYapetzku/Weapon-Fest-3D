@@ -15,6 +15,7 @@ public class GunsPointGiver : MonoBehaviour
     private List<int> _pointCountsInLayers;
     private int _pointIndex;
 
+    public IReadOnlyList<int> PointCountsInLayers => _pointCountsInLayers;
     public int GunPointsCount => _gunPoints.Count;
     public float DistanceBetweenGuns => _distanceBetweenGuns;
 

@@ -7,6 +7,7 @@ public class EndLevelMenu : MonoBehaviour
     [SerializeField] private ResultHandler _resultHandler;
     [SerializeField] private TMP_Text _currentGameScoreViewer;
     [SerializeField] private TMP_Text _allGameScoresViewer;
+    [SerializeField] private int _allGameScoresViewMax;
     [SerializeField] private float _addResultAnimationDuration;
     [SerializeField] private float _addResultAnimationDelay;
 
@@ -16,7 +17,7 @@ public class EndLevelMenu : MonoBehaviour
     private void OnEnable()
     {
         _currentGameScores = _resultHandler.CurrentGameScores;
-        _allScores = _resultHandler.AllCollectedScores;
+        _allScores = Mathf.Clamp(_resultHandler.AllCollectedScores, 0, _allGameScoresViewMax);
 
         ShowResult();
         StartCoroutine(ShowAddResultAnimation());
@@ -42,7 +43,7 @@ public class EndLevelMenu : MonoBehaviour
                 timer = 0;
             var normalizedTimer = timer / _addResultAnimationDuration;
             _currentGameScores = (int)Mathf.Lerp(0, startAnimationCurrentGameScores, normalizedTimer);
-            _allScores = (int)Mathf.Lerp(startAnimationAllScores + startAnimationCurrentGameScores, startAnimationAllScores, normalizedTimer);            
+            _allScores = (int)Mathf.Lerp(Mathf.Clamp(startAnimationAllScores + startAnimationCurrentGameScores, 0, _allGameScoresViewMax), startAnimationAllScores, normalizedTimer);            
 
             ShowResult();
 

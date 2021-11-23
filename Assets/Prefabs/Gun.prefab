@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: -1774751246594008992}
   - component: {fileID: 1158044792344720636}
   - component: {fileID: -4527675920556994066}
-  - component: {fileID: 838528737486436146}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -114,18 +113,6 @@ MonoBehaviour:
   _appearDuration: 2
   _appearSphereRadius: 5
   _appearSpherePositionZ: -5
---- !u!114 &838528737486436146
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1158044792344720639}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b08750dc33f4f6441b41e778447a7e1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6850933802471230130
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,6 +124,7 @@ GameObject:
   - component: {fileID: 5584443453955774765}
   - component: {fileID: 1234752577270507105}
   - component: {fileID: 7175584243044726263}
+  - component: {fileID: 2652718360154394566}
   m_Layer: 0
   m_Name: FX_Shot
   m_TagString: Untagged
@@ -4989,6 +4977,18 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &2652718360154394566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6850933802471230130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b08750dc33f4f6441b41e778447a7e1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3340062924248492702
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ public class FinalObstacle : MonoBehaviour
     private int _discreteDurablityStep;
     private int _burstBalloonIndex;
 
-    public event UnityAction<float> Hiteted;
+    public event UnityAction<float> Broken;
 
     public int Durability => _durability;
 
@@ -50,7 +50,6 @@ public class FinalObstacle : MonoBehaviour
 
     private void BurstBalloons()
     {
-        Hiteted?.Invoke(_scoreMultiplier);
         while (_durability < _discreteDurablity && _burstBalloonIndex >= 0)
         {
             _balloons[_burstBalloonIndex].Burst();
@@ -61,6 +60,7 @@ public class FinalObstacle : MonoBehaviour
 
     private void SetBrokenState()
     {
+        Broken?.Invoke(_scoreMultiplier);
         _collider.enabled = false;
     }
 }

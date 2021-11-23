@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
@@ -9,18 +8,12 @@ public class PlayerColliderScaler : MonoBehaviour
     private Player _player;
     private SphereCollider _playerCollider;
     private GunsPointGiver _gunsPointGiver;
-    private List<int> _pointCountsInLayers;
 
     private void Awake()
     {
         _player = GetComponentInParent<Player>();
         _playerCollider = GetComponent<SphereCollider>();
         _gunsPointGiver = GetComponentInParent<GunsPointGiver>();
-    }
-
-    private void Start()
-    {
-        _pointCountsInLayers = _gunsPointGiver.GetPointCountsInLayers();
     }
 
     private void OnEnable()
@@ -37,9 +30,10 @@ public class PlayerColliderScaler : MonoBehaviour
     {
         _playerCollider.radius = _gunsPointGiver.DistanceBetweenGuns;
 
-        for (int i = 0; i < _pointCountsInLayers.Count - 1; i++)
+
+        for (int i = 0; i < _gunsPointGiver.PointCountsInLayers.Count - 1; i++)
         {
-            if (playerGunsCount > _pointCountsInLayers[i])
+            if (playerGunsCount > _gunsPointGiver.PointCountsInLayers[i])
             {
                 _playerCollider.radius += _gunsPointGiver.DistanceBetweenGuns;
             }

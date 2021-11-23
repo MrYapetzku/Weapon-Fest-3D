@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Animator), typeof(ShootPoint))]
+[RequireComponent(typeof(Animator))]
 public class Gun : MonoBehaviour
 {
     [SerializeField] private ParticleSystem _particleSystem;
@@ -12,7 +12,10 @@ public class Gun : MonoBehaviour
 
     private void Awake()
     {
-        _shootPoint = GetComponent<ShootPoint>();
+        _shootPoint = GetComponentInChildren<ShootPoint>();
+        if (_shootPoint == null)
+            throw new System.Exception($"Children objects doesn't contain component {typeof(ShootPoint)}");
+
         _animator = GetComponent<Animator>();
         _shooting = GetComponentInParent<Shooting>();
         if (_shooting == null)
