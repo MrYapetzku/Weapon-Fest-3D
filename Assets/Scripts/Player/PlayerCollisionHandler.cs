@@ -32,22 +32,22 @@ public class PlayerCollisionHandler : MonoBehaviour
             if (pairCollisionDisabler)
                 pairCollisionDisabler.DisablePairCollider();
 
-            switch (changer.Operation)
+            switch (changer.Type)
             {
-                case '+':
+                case GunsCountChanger.OperationType.Add:
                     _player.IncreaseGunsCountBy(changer.Value);
                     break;
 
-                case '-':
+                case GunsCountChanger.OperationType.Subtract:
                     _player.DecreaseGunsCountBy(changer.Value);
                     break;
 
-                case 'x':
+                case GunsCountChanger.OperationType.Multiply:
                     int increaseValue = _player.GunsCount * (changer.Value - 1);
                     _player.IncreaseGunsCountBy(increaseValue);
                     break;
 
-                case '÷':
+                case GunsCountChanger.OperationType.Divide:
                     int decreaseValue = _player.GunsCount - (_player.GunsCount / changer.Value);
                     _player.DecreaseGunsCountBy(decreaseValue);
                     break;

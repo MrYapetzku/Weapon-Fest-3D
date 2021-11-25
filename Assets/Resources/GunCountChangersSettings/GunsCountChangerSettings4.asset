@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7ce1f14b7264664f9e4ddabb62a580d, type: 3}
   m_Name: GunsCountChangerSettings4
   m_EditorClassIdentifier: 
-  _operation: 47
+  _type: 3
   _value: 2
-  _material: {fileID: 2100000, guid: 492fde2e3f7a83b42a24708d53c0a353, type: 2}
