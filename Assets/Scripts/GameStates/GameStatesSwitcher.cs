@@ -91,7 +91,7 @@ public class GameStatesSwitcher : MonoBehaviour
         _statesMap[typeof(PlayState)] = new PlayState(_resultHandler, _mainCameraContainer, _player, _gameMenu);
         _statesMap[typeof(FinishingState)] = new FinishingState(_resultHandler, _mainCameraContainer, _player);
         _statesMap[typeof(FinishedState)] = new FinishedState(_resultHandler, _mainCameraContainer, _player, _endLevelMenu);
-        _statesMap[typeof(GameLossState)] = new GameLossState(_resultHandler, _mainCameraContainer, _player, _gameLossMenu);
+        _statesMap[typeof(GameLossState)] = new GameLossState(_resultHandler, _mainCameraContainer, _gameLossMenu);
     }
 
     private void SetState(IGameState newState)

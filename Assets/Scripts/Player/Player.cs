@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(PlayerMover), typeof(Shooting), typeof(GunsPointGiver))]
+[RequireComponent(typeof(PlayerMover), typeof(GunsPointGiver))]
 public class Player : MonoBehaviour
 {
     [SerializeField] private GunsContainer _gunsContainer;
     [SerializeField] private Gun _gunTemplate;
     [SerializeField] private int _poolCount;
-
     [SerializeField] private float _duplicateAnimationDuration;
     [SerializeField] private int _duplicateAnimationGunsCount;
 
@@ -70,11 +69,11 @@ public class Player : MonoBehaviour
         else
         {
             GameLoss?.Invoke();
-            ResetPlayerGunsCount();
+            SetZeroPlayerGunsCount();
         }
     }
 
-    public void ResetPlayerGunsCount()
+    private void SetZeroPlayerGunsCount()
     {
         if (_playerVisibleGuns == null)
             return;
@@ -85,6 +84,14 @@ public class Player : MonoBehaviour
 
         _gunToDuplicateIndex = 0;
         _playerGunsCount = 0;
+        PlayerGunsCountChanged?.Invoke(_playerGunsCount);
+    }
+
+    public void ResetPlayerGunsCount()
+    {
+        if (_playerVisibleGuns == null)
+            return;
+        SetZeroPlayerGunsCount();
         AddGun();
         PlayerGunsCountChanged?.Invoke(_playerGunsCount);
     }

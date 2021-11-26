@@ -18,6 +18,11 @@ public class PlayerGunsCountViewer : MonoBehaviour
 
     private void OnPlayerGunsCountChanged(int value)
     {
+        if (value == 0)
+        {
+            _text.text = "";
+            return;
+        }
         _text.text = value.ToString();
     }
 }
