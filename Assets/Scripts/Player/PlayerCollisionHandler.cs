@@ -3,6 +3,8 @@
 [RequireComponent(typeof(Player))]
 public class PlayerCollisionHandler : MonoBehaviour
 {
+    [SerializeField] private ParticleSystem _gunExplosion;
+
     private Player _player;
 
     private void Awake()
@@ -40,6 +42,7 @@ public class PlayerCollisionHandler : MonoBehaviour
 
                 case GunsCountChanger.OperationType.Subtract:
                     _player.DecreaseGunsCountBy(changer.Value);
+                    _gunExplosion.Play();
                     break;
 
                 case GunsCountChanger.OperationType.Multiply:
@@ -50,6 +53,7 @@ public class PlayerCollisionHandler : MonoBehaviour
                 case GunsCountChanger.OperationType.Divide:
                     int decreaseValue = _player.GunsCount - (_player.GunsCount / changer.Value);
                     _player.DecreaseGunsCountBy(decreaseValue);
+                    _gunExplosion.Play();
                     break;
             }
         }
