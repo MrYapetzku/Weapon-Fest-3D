@@ -29,7 +29,6 @@ public class GameStatesSwitcher : MonoBehaviour
 
     private void OnEnable()
     {
-        _input.UI.Enable();
         _input.UI.StartGame.performed += ctx => SetPlayState();
 
         _player.LevelFinishing += SetFinishingState;
@@ -39,7 +38,6 @@ public class GameStatesSwitcher : MonoBehaviour
 
     private void OnDisable()
     {
-        _input.UI.Disable();
         _input.UI.StartGame.performed -= ctx => SetPlayState();
 
         _player.LevelFinishing -= SetFinishingState;
@@ -49,7 +47,6 @@ public class GameStatesSwitcher : MonoBehaviour
 
     public void SetStartState()
     {
-        _input.UI.Enable();
         _input.Player.Disable();
         var state = GetState<StartState>();
         SetState(state);
@@ -87,7 +84,7 @@ public class GameStatesSwitcher : MonoBehaviour
     {
         _statesMap = new Dictionary<Type, IGameState>();
 
-        _statesMap[typeof(StartState)] = new StartState(_levelLoader, _resultHandler, _mainCameraContainer, _player, _mainMenu);
+        _statesMap[typeof(StartState)] = new StartState(_levelLoader, _resultHandler, _mainCameraContainer, _player, _mainMenu, _input);
         _statesMap[typeof(PlayState)] = new PlayState(_resultHandler, _mainCameraContainer, _player, _gameMenu);
         _statesMap[typeof(FinishingState)] = new FinishingState(_resultHandler, _mainCameraContainer, _player);
         _statesMap[typeof(FinishedState)] = new FinishedState(_resultHandler, _mainCameraContainer, _player, _endLevelMenu);

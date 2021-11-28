@@ -9,7 +9,6 @@ public class PlayerMover : MonoBehaviour
 
     private PlayerInput _input;
     private float _screenTouchDeltaX;
-
     private Rigidbody _rigidbody;
 
     private void Awake()

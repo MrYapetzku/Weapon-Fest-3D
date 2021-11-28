@@ -19,8 +19,7 @@ public class LookAtBossAnimation : MonoBehaviour
         {
             timer -= Time.deltaTime;
 
-            Time.timeScale = Mathf.Lerp(1, _reducedTimeScale, timer / _duration);
-
+            Time.timeScale = Mathf.Lerp(1, Time.timeScale, timer / _duration);
             yield return new WaitForEndOfFrame();
         }
     }
