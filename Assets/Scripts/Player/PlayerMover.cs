@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerMover : MonoBehaviour
 {
     [SerializeField] private float _speed;
@@ -9,26 +10,33 @@ public class PlayerMover : MonoBehaviour
     private PlayerInput _input;
     private float _screenTouchDeltaX;
 
+    private Rigidbody _rigidbody;
+
     private void Awake()
     {
         _input = new PlayerInput();
+
+        _rigidbody = GetComponent<Rigidbody>();
     }
 
     private void OnEnable()
     {
         _input.Player.Enable();
         _input.Player.MoveX.performed += ctx => OnMoveX();
+
+        _rigidbody.velocity = Vector3.forward * _speed;
     }
 
     private void OnDisable()
     {
         _input.Player.Disable();
         _input.Player.MoveX.performed -= ctx => OnMoveX();
+
+        _rigidbody.velocity = Vector3.zero;
     }
 
     private void Update()
     {
-        transform.position += Vector3.forward * _speed * Time.deltaTime;
         _screenTouchDeltaX = _input.Player.MoveX.ReadValue<float>();
     }
 

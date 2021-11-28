@@ -4,8 +4,8 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Animator), typeof(SphereCollider))]
 public class Balloon : MonoBehaviour
 {
-    [SerializeField] private int _damage;
-    [SerializeField] private int _score;
+    [SerializeField][Min(0)] private int _damage;
+    [SerializeField][Min(0)] private int _score;
     [SerializeField] private Animator _animator;
     [SerializeField] private ParticleSystem _particleSystem;
 

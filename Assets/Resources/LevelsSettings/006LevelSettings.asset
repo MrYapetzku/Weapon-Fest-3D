@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e258845c47cf7c42afdc1b40403810f, type: 3}
-  m_Name: 004LevelSettings
+  m_Name: 006LevelSettings
   m_EditorClassIdentifier: 
   _skyBoxMaterial: {fileID: 2100000, guid: 3930fc89a28b29746bde6a2389a513e0, type: 2}
   _levelEnvironmentTemplate: {fileID: 4164431236081482499, guid: 69af126b42cd9444686279cdc28bab5e, type: 3}

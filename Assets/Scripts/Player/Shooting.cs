@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(FinalShotBulletChecker))]
 public class Shooting : MonoBehaviour
 {
     [SerializeField] private BulletContainer _bulletContainer;
@@ -12,11 +13,13 @@ public class Shooting : MonoBehaviour
 
     private float _currentTime;
     private bool _isFinalFire;
+    private FinalShotBulletChecker _finalShotBulletChecker;
 
     public event UnityAction<bool> Fire;
 
     private void Awake()
     {
+        _finalShotBulletChecker = GetComponent<FinalShotBulletChecker>();
         BulletPool = new PoolMono<Bullet>(_bulletTemplate, _bulletContainer.transform, _poolCount);
         _currentTime = _shootingTimeDelta;
     }
@@ -41,5 +44,6 @@ public class Shooting : MonoBehaviour
     {
         _isFinalFire = true;
         Fire?.Invoke(_isFinalFire);
+        _finalShotBulletChecker.enabled = true;
     }
 }

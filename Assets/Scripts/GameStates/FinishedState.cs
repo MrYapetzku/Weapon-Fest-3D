@@ -33,7 +33,6 @@ public class FinishedState : IGameState
     {
         _endLevelMenu.gameObject.SetActive(true);
         _resultHandler.Save();
-        _playerTracker.GetComponent<FinalShotAnimationMove>().enabled = false;
         _cameraAnimator.SetTrigger(MainCameraAnimator.Finished);
         _playerAnimator.SetTrigger(PlayerAnimator.Idle);
     }

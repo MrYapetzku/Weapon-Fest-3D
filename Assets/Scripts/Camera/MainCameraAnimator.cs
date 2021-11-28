@@ -4,4 +4,5 @@ public static class MainCameraAnimator
     public const string Reset = "Reset";
     public const string Finishing = "Finishing";
     public const string Finished = "Finished";
+    public const string LookAtBoss = "LookAtBoss";
 }

@@ -251,7 +251,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4882558394911734, guid: 7e48ba6b1b968764490bbc70b66e3fe1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.5
+      value: -0.75
       objectReference: {fileID: 0}
     - target: {fileID: 4882558394911734, guid: 7e48ba6b1b968764490bbc70b66e3fe1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -654,7 +654,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Level Compleated!
+  m_text: Level Completed!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 39d0a347e994f2549af7ceea9c63cd80, type: 2}
   m_sharedMaterial: {fileID: 5236206167008769112, guid: 39d0a347e994f2549af7ceea9c63cd80, type: 2}
@@ -681,7 +681,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 177
+  m_fontSize: 196.8
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -941,7 +941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1883f9266e2c6d448a5e1ca93d55800f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 1016535941}
+  _player: {fileID: 1016535944}
 --- !u!4 &168212621
 Transform:
   m_ObjectHideFlags: 0
@@ -2405,10 +2405,10 @@ MonoBehaviour:
   _levelLoader: {fileID: 289971098}
   _resultHandler: {fileID: 1042407306}
   _player: {fileID: 1016535944}
+  _mainMenu: {fileID: 824893952}
   _gameMenu: {fileID: 640678866}
   _endLevelMenu: {fileID: 1519168571}
   _gameLossMenu: {fileID: 650965246}
-  _ui: {fileID: 2069338087}
 --- !u!4 &793910167
 Transform:
   m_ObjectHideFlags: 0
@@ -3388,9 +3388,9 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!114 &1016535948
 MonoBehaviour:
@@ -3454,7 +3454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 1016535944}
-  _bulletContainer: {fileID: 1721626718}
+  _gameObjectsContainer: {fileID: 287590679}
 --- !u!1 &1042407305
 GameObject:
   m_ObjectHideFlags: 0

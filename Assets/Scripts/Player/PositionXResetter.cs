@@ -1,30 +1,30 @@
+using System.Collections;
 using UnityEngine;
 
 public class PositionXResetter : MonoBehaviour
 {
     [SerializeField] private float _duration;
 
-    private Vector3 _startPosition;
-    private Vector3 _targetPosition;
-    private float _timer;
-
     private void OnEnable()
     {
-        _startPosition = transform.position;
-        _targetPosition = new Vector3(0, transform.position.y, transform.position.z);
-        _timer = _duration;
+        StartCoroutine(ResetPosition());
     }
 
-    private void Update()
+    private IEnumerator ResetPosition()
     {
-        _timer -= Time.deltaTime;
+        Vector3 startPosition = transform.position;
+        Vector3 targetPosition = new Vector3(0, transform.position.y, transform.position.z);
 
-        transform.position = Vector3.Lerp(_targetPosition, _startPosition, _timer/ _duration);
+        float timer = _duration;
 
-        if (_timer <= 0)
+        while (timer > 0)
         {
-            _timer = 0;
-            this.enabled = false;
+            timer -= Time.deltaTime;
+
+            transform.position = Vector3.Lerp(targetPosition, startPosition, timer / _duration);
+
+            yield return new WaitForEndOfFrame();
         }
+        enabled = false;
     }
 }
