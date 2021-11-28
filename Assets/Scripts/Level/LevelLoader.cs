@@ -42,10 +42,10 @@ public class LevelLoader : MonoBehaviour
         }
 
         RenderSettings.skybox = _settings[levelIndex].SkyBoxMaterial;
+        RenderSettings.fogColor = _settings[levelIndex].FogColor;
         _loadedEnvironment = Instantiate(_settings[levelIndex].LevelEnvironment, _environmentContainer.transform);
         _loadedLevelGameObjects = Instantiate(_settings[levelIndex].LevelGameObjects, _gameObjectsContainer.transform);
         StartCoroutine(WaitUntilLevelGameObjectsLoaded());
-        _loadedLevelGameObjects.gameObject.SetActive(true);
         _soundSource.Init();
     }
 
