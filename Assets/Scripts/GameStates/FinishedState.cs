@@ -10,11 +10,11 @@ public class FinishedState : IGameState
     private Animator _playerAnimator;
     private Wind_FX _wind_FX;
 
-    public FinishedState(ResultHandler resultHandler, PlayerTracker mainCameraContainer, Player player, EndLevelMenu endLevelMenu)
+    public FinishedState(ResultHandler resultHandler, PlayerTracker mainCameraContainer, Player player, UI uI)
     {
         _resultHandler = resultHandler;
         _playerTracker = mainCameraContainer;
-        _endLevelMenu = endLevelMenu;
+        _endLevelMenu = uI.EndLevelMenu;
 
         _cameraAnimator = mainCameraContainer.GetComponent<Animator>();
         if (_cameraAnimator == null)

@@ -6,10 +6,10 @@ public class GameLossState : IGameState
     private GameLossMenu _gameLossMenu;
     private Wind_FX _wind_FX;
 
-    public GameLossState(ResultHandler resultHandler, PlayerTracker mainCameraContainer, GameLossMenu gameLossMenu)
+    public GameLossState(ResultHandler resultHandler, PlayerTracker mainCameraContainer, UI uI)
     {
         _resultHandler = resultHandler;
-        _gameLossMenu = gameLossMenu;
+        _gameLossMenu = uI.GameLossMenu;
         _wind_FX = mainCameraContainer.GetComponentInChildren<Wind_FX>();
         if (_wind_FX == null)
             throw new Exception($"Main cameras children doesn't contain component {typeof(Wind_FX)}");

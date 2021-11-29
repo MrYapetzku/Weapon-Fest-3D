@@ -12,13 +12,13 @@ public class StartState : IGameState
     private MainMenu _mainMenu;
     private PlayerInput _playerInput;
 
-    public StartState(LevelLoader levelLoader, ResultHandler resultHandler, PlayerTracker mainCameraContainer, Player player, MainMenu mainMenu, PlayerInput playerInput)
+    public StartState(LevelLoader levelLoader, ResultHandler resultHandler, PlayerTracker mainCameraContainer, Player player, UI uI, PlayerInput playerInput)
     {
         _levelLoader = levelLoader;
         _resultHandler = resultHandler;
         _mainCameraContainer = mainCameraContainer;
         _player = player;
-        _mainMenu = mainMenu;
+        _mainMenu = uI.MainMenu;
         _playerInput = playerInput;
 
         _playerAnimator = player.GetComponent<Animator>();

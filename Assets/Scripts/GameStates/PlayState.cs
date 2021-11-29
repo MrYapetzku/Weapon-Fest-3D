@@ -9,7 +9,7 @@ public class PlayState : IGameState
     private Shooting _shooting;
     private GameMenu _gameMenu;
 
-    public PlayState(ResultHandler resultHandler, PlayerTracker mainCameraContainer, Player player, GameMenu gameMenu)
+    public PlayState(ResultHandler resultHandler, PlayerTracker mainCameraContainer, Player player, UI uI)
     {
         _resultHandler = resultHandler;
         _cameraAnimator = mainCameraContainer.GetComponent<Animator>();
@@ -24,7 +24,7 @@ public class PlayState : IGameState
         if (_shooting == null)
             throw new Exception($"Player doesn't contain component {typeof(Shooting)}");
 
-        _gameMenu = gameMenu;
+        _gameMenu = uI.GameMenu;
     }
 
     public void Enter()

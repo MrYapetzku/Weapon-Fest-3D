@@ -4,16 +4,11 @@ using UnityEngine;
 
 public class GameStatesSwitcher : MonoBehaviour
 {
-    [Header("Game components")]
     [SerializeField] private PlayerTracker _mainCameraContainer;
     [SerializeField] private LevelLoader _levelLoader;
     [SerializeField] private ResultHandler _resultHandler;
     [SerializeField] private Player _player;
-    [Header("UI")]
-    [SerializeField] private MainMenu _mainMenu;
-    [SerializeField] private GameMenu _gameMenu;
-    [SerializeField] private EndLevelMenu _endLevelMenu;
-    [SerializeField] private GameLossMenu _gameLossMenu;
+    [SerializeField] private UI _uI;
 
     private PlayerInput _input;
     private Dictionary<Type, IGameState> _statesMap;
@@ -84,11 +79,11 @@ public class GameStatesSwitcher : MonoBehaviour
     {
         _statesMap = new Dictionary<Type, IGameState>();
 
-        _statesMap[typeof(StartState)] = new StartState(_levelLoader, _resultHandler, _mainCameraContainer, _player, _mainMenu, _input);
-        _statesMap[typeof(PlayState)] = new PlayState(_resultHandler, _mainCameraContainer, _player, _gameMenu);
+        _statesMap[typeof(StartState)] = new StartState(_levelLoader, _resultHandler, _mainCameraContainer, _player, _uI, _input);
+        _statesMap[typeof(PlayState)] = new PlayState(_resultHandler, _mainCameraContainer, _player, _uI);
         _statesMap[typeof(FinishingState)] = new FinishingState(_resultHandler, _mainCameraContainer, _player);
-        _statesMap[typeof(FinishedState)] = new FinishedState(_resultHandler, _mainCameraContainer, _player, _endLevelMenu);
-        _statesMap[typeof(GameLossState)] = new GameLossState(_resultHandler, _mainCameraContainer, _gameLossMenu);
+        _statesMap[typeof(FinishedState)] = new FinishedState(_resultHandler, _mainCameraContainer, _player, _uI);
+        _statesMap[typeof(GameLossState)] = new GameLossState(_resultHandler, _mainCameraContainer, _uI);
     }
 
     private void SetState(IGameState newState)
