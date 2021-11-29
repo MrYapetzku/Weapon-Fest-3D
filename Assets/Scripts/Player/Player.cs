@@ -33,10 +33,6 @@ public class Player : MonoBehaviour
         ResetPlayerGunsCount();
     }
 
-    private void Update()
-    {
-    }
-
     public void OnLevelFinishing()
     {
         LevelFinishing?.Invoke();

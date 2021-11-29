@@ -48,7 +48,7 @@ public class ResultHandler : MonoBehaviour
 
         foreach (var obstacle in _finalObstacles)
             obstacle.Broken -= OnBroken;
-        
+
     }
 
     private void OnBroken(float multiplier)

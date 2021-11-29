@@ -4977,6 +4977,7 @@ MonoBehaviour:
   _score: 10
   _animator: {fileID: -4305948441527555210}
   _particleSystem: {fileID: 4146918238991973848}
+  _collider: {fileID: 7420619659812141195}
 --- !u!1 &6918016542166903178
 GameObject:
   m_ObjectHideFlags: 0
