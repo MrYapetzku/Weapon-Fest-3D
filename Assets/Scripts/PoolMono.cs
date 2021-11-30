@@ -14,6 +14,8 @@ public class PoolMono<T> where T : MonoBehaviour
         CreatePool(count);
     }
 
+    public IReadOnlyList<T> Pool => _pool;
+
     private void CreatePool(int count)
     {
         _pool = new List<T>();

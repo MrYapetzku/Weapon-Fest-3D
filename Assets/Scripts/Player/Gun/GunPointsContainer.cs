@@ -1,16 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Player))]
-public class GunsPointGiver : MonoBehaviour
+public class GunPointsContainer : MonoBehaviour
 {
-    [SerializeField] private GunPointsContainer _gunsPointsContainer;
     [SerializeField] private GunPoint _gunPointTemplate;
     [SerializeField] private int _maxGunsLayersInPlayer;
     [SerializeField] private float _distanceBetweenGuns;
     [SerializeField] private float _positionFactorZ;
 
-    private Player _player;
     private List<GunPoint> _gunPoints;
     private List<int> _pointCountsInLayers;
     private int _pointIndex;
@@ -21,17 +18,10 @@ public class GunsPointGiver : MonoBehaviour
 
     private void Awake()
     {
-        _player = GetComponent<Player>();
         _gunPoints = new List<GunPoint>();
         _pointCountsInLayers = new List<int>();
         _pointIndex = 0;
         GenerateGunPoints();
-        _player.enabled = true;
-    }
-
-    private void OnDisable()
-    {
-        _player.enabled = false;
     }
 
     public GunPoint GetPoint()
@@ -48,14 +38,6 @@ public class GunsPointGiver : MonoBehaviour
         _pointIndex -= 1;
         if (_pointIndex < 0)
             _pointIndex = _gunPoints.Count - 1;
-    }
-
-    public List<int> GetPointCountsInLayers()
-    {
-        List<int> pointsCounts = new List<int>();
-        foreach (var count in _pointCountsInLayers)
-            pointsCounts.Add(count);
-        return pointsCounts;
     }
 
     private void GenerateGunPoints()
@@ -79,7 +61,7 @@ public class GunsPointGiver : MonoBehaviour
 
     private void SetPoint(Vector3 position)
     {
-        GunPoint point = Instantiate(_gunPointTemplate, _gunsPointsContainer.transform);
+        GunPoint point = Instantiate(_gunPointTemplate, transform);
         point.transform.position = position;
         _gunPoints.Add(point);
     }

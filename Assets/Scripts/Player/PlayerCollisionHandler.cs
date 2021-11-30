@@ -3,14 +3,8 @@
 [RequireComponent(typeof(Player))]
 public class PlayerCollisionHandler : MonoBehaviour
 {
+    [SerializeField]private Player _player;
     [SerializeField] private ParticleSystem _gunExplosion;
-
-    private Player _player;
-
-    private void Awake()
-    {
-        _player = GetComponent<Player>();
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -24,7 +18,7 @@ public class PlayerCollisionHandler : MonoBehaviour
         if (balloon)
         {
             balloon.TakeOffGun();
-            _player.DecreaseGunsCountBy(balloon.Damage);
+            _player.ChangeGunsBy(-balloon.Damage);
         }
 
         if (changer)
@@ -37,22 +31,22 @@ public class PlayerCollisionHandler : MonoBehaviour
             switch (changer.Type)
             {
                 case GunsCountChanger.OperationType.Add:
-                    _player.IncreaseGunsCountBy(changer.Value);
+                    _player.ChangeGunsBy(changer.Value);
                     break;
 
                 case GunsCountChanger.OperationType.Subtract:
-                    _player.DecreaseGunsCountBy(changer.Value);
+                    _player.ChangeGunsBy(-changer.Value);
                     _gunExplosion.Play();
                     break;
 
                 case GunsCountChanger.OperationType.Multiply:
-                    int increaseValue = _player.GunsCount * (changer.Value - 1);
-                    _player.IncreaseGunsCountBy(increaseValue);
+                    int increaseValue = _player.Guns * (changer.Value - 1);
+                    _player.ChangeGunsBy(increaseValue);
                     break;
 
                 case GunsCountChanger.OperationType.Divide:
-                    int decreaseValue = _player.GunsCount - (_player.GunsCount / changer.Value);
-                    _player.DecreaseGunsCountBy(decreaseValue);
+                    int decreaseValue = _player.Guns - (_player.Guns / changer.Value);
+                    _player.ChangeGunsBy(-decreaseValue);
                     _gunExplosion.Play();
                     break;
             }

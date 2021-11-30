@@ -20,7 +20,7 @@ public class FinalShotBulletChecker : MonoBehaviour
 
     private void OnEnable()
     {
-        _bullets.AddRange(_gameObjectsContainer.GetComponentsInChildren<Bullet>());
+        _bullets.AddRange(_gameObjectsContainer.BulletContainer.GetComponentsInChildren<Bullet>());
         _bossBalloon = _gameObjectsContainer.GetComponentInChildren<BossBalloon>();
         if (_bossBalloon)
             _bossBalloon.BossHitted += OnBossHitted;

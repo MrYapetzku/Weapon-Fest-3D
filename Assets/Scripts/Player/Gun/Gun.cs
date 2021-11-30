@@ -3,20 +3,19 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class Gun : MonoBehaviour
 {
+    [SerializeField] private Animator _animator;
+    [SerializeField] private ShootPoint _shootPoint;
     [SerializeField] private ParticleSystem _particleSystem;
 
-    private ShootPoint _shootPoint;
-    private Animator _animator;
     private Shooting _shooting;
     private int _duplicates;
 
+    public float AppearDuration { get; private set; }
+    public float AppearSphereRadius { get; private set; }
+    public float AppearSpherePositionZ { get; private set; }
+
     private void Awake()
     {
-        _shootPoint = GetComponentInChildren<ShootPoint>();
-        if (_shootPoint == null)
-            throw new System.Exception($"Children objects doesn't contain component {typeof(ShootPoint)}");
-
-        _animator = GetComponent<Animator>();
         _shooting = GetComponentInParent<Shooting>();
         if (_shooting == null)
             throw new System.Exception($"Parant object doesn't contain component {typeof(Shooting)}");
@@ -31,6 +30,15 @@ public class Gun : MonoBehaviour
     private void OnDisable()
     {
         _shooting.Fire -= OnFire;
+    }
+
+    public void Initialization(float time, float radius, float zFactor)
+    {
+        if (time > 0)
+            AppearDuration = time;
+        if (radius >= 0)
+            AppearSphereRadius = radius;
+        AppearSpherePositionZ = zFactor;
     }
 
     public void IncreaseDuplicateByOne()

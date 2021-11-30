@@ -97,6 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f80b62c1f2ab6ca418b2b55060c10e50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: -1774751246594008992}
+  _shootPoint: {fileID: 2652718360154394566}
   _particleSystem: {fileID: 1234752577270507105}
 --- !u!114 &-4527675920556994066
 MonoBehaviour:
@@ -110,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d774b6af76fb1ea498fcead4f6bc03d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _appearDuration: 2
+  _gun: {fileID: 1158044792344720636}
   _appearSphereRadius: 5
   _appearSpherePositionZ: -5
 --- !u!1 &6850933802471230130
@@ -126,7 +128,7 @@ GameObject:
   - component: {fileID: 7175584243044726263}
   - component: {fileID: 2652718360154394566}
   m_Layer: 0
-  m_Name: FX_Shot
+  m_Name: FX_Shot (Shoot Point)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

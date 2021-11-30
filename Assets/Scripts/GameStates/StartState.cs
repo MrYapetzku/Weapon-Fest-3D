@@ -38,7 +38,7 @@ public class StartState : IGameState
         _mainCameraContainer.transform.position = Vector3.zero;
         _cameraAnimator.SetTrigger(MainCameraAnimator.Reset);
         _player.transform.position = Vector3.zero;
-        _player.ResetPlayerGunsCount();
+        _player.ResetGuns();
         _playerAnimator.SetTrigger(PlayerAnimator.Idle);
         _mainMenu.gameObject.SetActive(true);
         _mainCameraContainer.GetComponent<PlayerTracker>().enabled = true;

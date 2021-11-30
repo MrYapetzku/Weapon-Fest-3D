@@ -8,12 +8,12 @@ public class PlayerGunsCountViewer : MonoBehaviour
 
     private void OnEnable()
     {
-        _player.PlayerGunsCountChanged += OnPlayerGunsCountChanged;
+        _player.GunsChanged += OnPlayerGunsCountChanged;
     }
 
     private void OnDisable()
     {
-        _player.PlayerGunsCountChanged -= OnPlayerGunsCountChanged;
+        _player.GunsChanged -= OnPlayerGunsCountChanged;
     }
 
     private void OnPlayerGunsCountChanged(int value)
