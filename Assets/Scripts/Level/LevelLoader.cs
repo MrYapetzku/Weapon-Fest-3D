@@ -51,10 +51,8 @@ public class LevelLoader : MonoBehaviour
 
     private IEnumerator WaitUntilLevelGameObjectsLoaded()
     {
-        float time = 0;
         while (_loadedLevelGameObjects.isActiveAndEnabled == false)
         {
-            time += Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
 

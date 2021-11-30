@@ -10,14 +10,12 @@ public class Balloon : MonoBehaviour
     [SerializeField] private Collider _collider;
 
     public event UnityAction<int> BalloonShot;
-    public event UnityAction BalloonBursting;
 
     public int Damage => _damage;
 
     public void TakeBulletHit()
     {
         _collider.enabled = false;
-        BalloonShot?.Invoke(_score);
         Burst();
     }
 
@@ -30,7 +28,7 @@ public class Balloon : MonoBehaviour
     {
         _animator.SetTrigger(BalloonAnimator.Burst);
         _particleSystem.Play();
-        BalloonBursting?.Invoke();
+        BalloonShot?.Invoke(_score);
     }
 
     private void Deactivate()

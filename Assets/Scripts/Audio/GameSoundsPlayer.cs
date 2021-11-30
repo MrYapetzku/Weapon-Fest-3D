@@ -18,18 +18,18 @@ public class GameSoundsPlayer : MonoBehaviour
     {
         _balloons = _gameObjectsContainer.GetComponentsInChildren<Balloon>();
         foreach (var baloon in _balloons)
-            baloon.BalloonBursting += OnBalloonBursting;
+            baloon.BalloonShot += OnBalloonShot;
         _playerShooting.Fire += OnFire;
     }
 
     public void Release()
     {
         foreach (var baloon in _balloons)
-            baloon.BalloonBursting -= OnBalloonBursting;
+            baloon.BalloonShot -= OnBalloonShot;
         _playerShooting.Fire -= OnFire;
     }
 
-    private void OnBalloonBursting()
+    private void OnBalloonShot(int scores)
     {
         _balloonSoundPlayer.Play();
     }
