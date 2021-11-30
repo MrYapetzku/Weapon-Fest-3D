@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class LookAtBossAnimation : MonoBehaviour
 {
-    [SerializeField] private float _reducedTimeScale;
+    [SerializeField][Min(0.1f)] private float _reducedTimeScale;
     [SerializeField][Min(0.1f)] private float _duration;
 
     private void ReduceTimeScale()

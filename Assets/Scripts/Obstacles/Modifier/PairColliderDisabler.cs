@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PairColliderDisabler : MonoBehaviour
 {
-    [SerializeField] private GunsCountChanger _PairGunsCountChanger;
+    [SerializeField] private Modifier _PairGunsCountChanger;
 
     private Collider _pairCollider;
 

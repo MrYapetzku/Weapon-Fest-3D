@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class PlayState : IGameState
@@ -9,21 +8,12 @@ public class PlayState : IGameState
     private Shooting _shooting;
     private GameMenu _gameMenu;
 
-    public PlayState(ResultHandler resultHandler, PlayerTracker mainCameraContainer, Player player, UI uI)
+    public PlayState(ResultHandler resultHandler, MainCameraContainer mainCameraContainer, Player player, UI uI)
     {
         _resultHandler = resultHandler;
-        _cameraAnimator = mainCameraContainer.GetComponent<Animator>();
-        if (_cameraAnimator == null)
-            throw new Exception($"Main camera container doesn't contain component {typeof(Animator)}");
-
-        _playerMover = player.GetComponent<PlayerMover>();
-        if (_playerMover == null)
-            throw new Exception($"Player doesn't contain component {typeof(PlayerMover)}");
-
-        _shooting = player.GetComponent<Shooting>();
-        if (_shooting == null)
-            throw new Exception($"Player doesn't contain component {typeof(Shooting)}");
-
+        _cameraAnimator = mainCameraContainer.Animator;
+        _playerMover = player.PlayerMover;
+        _shooting = player.Shooting;
         _gameMenu = uI.GameMenu;
     }
 

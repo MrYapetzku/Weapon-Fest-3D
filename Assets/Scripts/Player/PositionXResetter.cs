@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PositionXResetter : MonoBehaviour
 {
-    [SerializeField] private float _duration;
+    [SerializeField] [Min(0)] private float _duration;
 
     private void OnEnable()
     {

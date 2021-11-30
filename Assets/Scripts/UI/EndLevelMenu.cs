@@ -7,9 +7,9 @@ public class EndLevelMenu : MonoBehaviour
     [SerializeField] private ResultHandler _resultHandler;
     [SerializeField] private TMP_Text _currentGameScoreViewer;
     [SerializeField] private TMP_Text _allGameScoresViewer;
-    [SerializeField] private int _allGameScoresViewMax;
-    [SerializeField] private float _addResultAnimationDuration;
-    [SerializeField] private float _addResultAnimationDelay;
+    [SerializeField] [Min(0)] private int _allGameScoresViewMax;
+    [SerializeField] [Min(0)] private float _addResultAnimationDuration;
+    [SerializeField] [Min(0)] private float _addResultAnimationDelay;
 
     private int _currentGameScores;
     private int _allScores;

@@ -3,9 +3,9 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMover : MonoBehaviour
 {
-    [SerializeField] private float _speed;
-    [SerializeField] private float _roadWidth;
-    [SerializeField][Range(0, 0.01f)] private float _sensetivity;
+    [SerializeField] [Min(0)] private float _speed;
+    [SerializeField] [Min(0)] private float _roadWidth;
+    [SerializeField] [Range(0, 0.01f)] private float _sensetivity;
 
     private PlayerInput _input;
     private float _screenTouchDeltaX;
@@ -14,7 +14,6 @@ public class PlayerMover : MonoBehaviour
     private void Awake()
     {
         _input = new PlayerInput();
-
         _rigidbody = GetComponent<Rigidbody>();
     }
 

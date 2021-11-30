@@ -4,12 +4,15 @@ using UnityEngine.Events;
 public class Player : MonoBehaviour
 {
     [Header("Start Stats")]
-    [SerializeField] private int _startGuns;
+    [SerializeField] [Min(1)] private int _startGuns;
     [Space]
     [Header("Player Components")]
-    [SerializeField] GunPointsContainer _gunPointsContainer;
-    [SerializeField] PlayerViewModel _playerViewModel;
-    [SerializeField] PlayerColliderScaler _playerCollider;
+    [SerializeField] private Animator _animator;
+    [SerializeField] private GunPointsContainer _gunPointsContainer;
+    [SerializeField] private PlayerViewModel _playerViewModel;
+    [SerializeField] private PlayerColliderScaler _playerCollider;
+    [SerializeField] private PlayerMover _playerMover;
+    [SerializeField] private Shooting _shooting;
 
     private int _guns;
 
@@ -18,7 +21,10 @@ public class Player : MonoBehaviour
     public event UnityAction LevelFinishing;
     public event UnityAction LevelFinished;
 
+    public Animator Animator => _animator;
     public GunPointsContainer GunPointsContainer => _gunPointsContainer;
+    public PlayerMover PlayerMover => _playerMover;
+    public Shooting Shooting => _shooting;
 
     public int Guns
     {
@@ -52,23 +58,16 @@ public class Player : MonoBehaviour
         LevelFinished?.Invoke();
     }
 
-    public void ChangeGunsBy(int value)
+    public void ChangeGunsTo(int value)
     {
-        if (value >= 0)
+        if (value > 0)
         {
-            Guns += value;
+            Guns = value;
         }
         else
         {
-            if (_guns > -value)
-            {
-                Guns += value;
-            }
-            else
-            {
-                Guns = 0;
-                GameLoss?.Invoke();
-            }
+            Guns = 0;
+            GameLoss?.Invoke();
         }
     }
 

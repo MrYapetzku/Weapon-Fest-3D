@@ -4,9 +4,9 @@ using UnityEngine;
 public class GunPointsContainer : MonoBehaviour
 {
     [SerializeField] private GunPoint _gunPointTemplate;
-    [SerializeField] private int _maxGunsLayersInPlayer;
-    [SerializeField] private float _distanceBetweenGuns;
-    [SerializeField] private float _positionFactorZ;
+    [SerializeField] [Min(1)] private int _maxGunsLayersInPlayer;
+    [SerializeField] [Min(0)] private float _distanceBetweenGuns;
+    [SerializeField] [Min(0)] private float _positionFactorZ;
 
     private List<GunPoint> _gunPoints;
     private List<int> _pointCountsInLayers;

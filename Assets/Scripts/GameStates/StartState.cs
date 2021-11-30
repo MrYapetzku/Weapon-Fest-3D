@@ -1,18 +1,17 @@
-using System;
 using UnityEngine;
 
 public class StartState : IGameState
 {
     private LevelLoader _levelLoader;
     private ResultHandler _resultHandler;
-    private PlayerTracker _mainCameraContainer;
+    private MainCameraContainer _mainCameraContainer;
     private Player _player;
     private Animator _playerAnimator;
     private Animator _cameraAnimator;
     private MainMenu _mainMenu;
     private PlayerInput _playerInput;
 
-    public StartState(LevelLoader levelLoader, ResultHandler resultHandler, PlayerTracker mainCameraContainer, Player player, UI uI, PlayerInput playerInput)
+    public StartState(LevelLoader levelLoader, ResultHandler resultHandler, MainCameraContainer mainCameraContainer, Player player, UI uI, PlayerInput playerInput)
     {
         _levelLoader = levelLoader;
         _resultHandler = resultHandler;
@@ -20,14 +19,8 @@ public class StartState : IGameState
         _player = player;
         _mainMenu = uI.MainMenu;
         _playerInput = playerInput;
-
-        _playerAnimator = player.GetComponent<Animator>();
-        if (_playerAnimator == null)
-            throw new Exception($"Player doesn't contain component {typeof(Animator)}");
-
-        _cameraAnimator = mainCameraContainer.GetComponent<Animator>();
-        if (_cameraAnimator == null)
-            throw new Exception($"Main camera container doesn't contain component {typeof(Animator)}");
+        _playerAnimator = player.Animator;
+        _cameraAnimator = mainCameraContainer.Animator;
     }
 
     public void Enter()
@@ -41,8 +34,9 @@ public class StartState : IGameState
         _player.ResetGuns();
         _playerAnimator.SetTrigger(PlayerAnimator.Idle);
         _mainMenu.gameObject.SetActive(true);
-        _mainCameraContainer.GetComponent<PlayerTracker>().enabled = true;
-        _mainCameraContainer.GetComponent<FinalShotAnimationMove>().enabled = false;
+        _mainCameraContainer.Wind_FX.gameObject.SetActive(true);
+        _mainCameraContainer.PlayerTracker.enabled = true;
+        _mainCameraContainer.FinalShotAnimationMove.enabled = false;
     }
 
     public void Exit()

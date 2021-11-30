@@ -3,10 +3,10 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private float _defaultSpeed;
-    [SerializeField] private float _defaultLifetime;
-    [SerializeField] private float _finalShotSpeed;
-    [SerializeField] private float _finalShotLifetime;
+    [SerializeField] [Min(0)] private float _defaultSpeed;
+    [SerializeField] [Min(0)] private float _defaultLifetime;
+    [SerializeField] [Min(0)] private float _finalShotSpeed;
+    [SerializeField] [Min(0)] private float _finalShotLifetime;
 
     private Rigidbody _rigidbody;
     private float _lifeTime;

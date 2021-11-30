@@ -735,6 +735,7 @@ GameObject:
   m_Component:
   - component: {fileID: 168212621}
   - component: {fileID: 168212622}
+  - component: {fileID: 168212627}
   - component: {fileID: 168212620}
   - component: {fileID: 168212623}
   - component: {fileID: 168212625}
@@ -848,6 +849,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _reducedTimeScale: 0.1
   _duration: 0.14
+--- !u!114 &168212627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 168212619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe535ab6bfbe5f4478e8792f5ff2fae4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 168212622}
+  _playerTracker: {fileID: 168212620}
+  _finalShotAnimationMove: {fileID: 168212623}
+  _wind_FX: {fileID: 510639898}
 --- !u!1 &177450506
 GameObject:
   m_ObjectHideFlags: 0
@@ -1450,6 +1467,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 403943346}
   m_CullTransparentMesh: 1
+--- !u!114 &510639898 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2146694277, guid: 78616a69c0af94148a5c0ad4302fe457, type: 3}
+  m_PrefabInstance: {fileID: 2049650363}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa510950b2e39346af170fb8a9025a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &528422631 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2378133498510117175, guid: 78616a69c0af94148a5c0ad4302fe457, type: 3}
@@ -2223,7 +2251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9e6e85444023544f82d473564757f0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainCameraContainer: {fileID: 168212620}
+  _mainCameraContainer: {fileID: 168212627}
   _levelLoader: {fileID: 289971098}
   _resultHandler: {fileID: 1042407306}
   _player: {fileID: 1016535944}
@@ -3181,9 +3209,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startGuns: 1
+  _animator: {fileID: 1016535949}
   _gunPointsContainer: {fileID: 874094938}
   _playerViewModel: {fileID: 159956212}
   _playerCollider: {fileID: 226392352}
+  _playerMover: {fileID: 1016535941}
+  _shooting: {fileID: 1016535943}
 --- !u!114 &1016535945
 MonoBehaviour:
   m_ObjectHideFlags: 0

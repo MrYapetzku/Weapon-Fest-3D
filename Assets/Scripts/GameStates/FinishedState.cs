@@ -10,23 +10,14 @@ public class FinishedState : IGameState
     private Animator _playerAnimator;
     private Wind_FX _wind_FX;
 
-    public FinishedState(ResultHandler resultHandler, PlayerTracker mainCameraContainer, Player player, UI uI)
+    public FinishedState(ResultHandler resultHandler, MainCameraContainer mainCameraContainer, Player player, UI uI)
     {
         _resultHandler = resultHandler;
-        _playerTracker = mainCameraContainer;
+        _playerTracker = mainCameraContainer.PlayerTracker;
         _endLevelMenu = uI.EndLevelMenu;
-
-        _cameraAnimator = mainCameraContainer.GetComponent<Animator>();
-        if (_cameraAnimator == null)
-            throw new Exception($"Main camera container doesn't contain component {typeof(Animator)}");
-
-        _playerAnimator = player.GetComponent<Animator>();
-        if (_playerAnimator == null)
-            throw new Exception($"Player doesn't contain component {typeof(Animator)}");
-
-        _wind_FX = mainCameraContainer.GetComponentInChildren<Wind_FX>();
-        if (_wind_FX == null)
-            throw new Exception($"Main cameras children doesn't contain component {typeof(Wind_FX)}");
+        _cameraAnimator = mainCameraContainer.Animator;
+        _playerAnimator = player.Animator;
+        _wind_FX = mainCameraContainer.Wind_FX;
     }
 
     public void Enter()

@@ -5,7 +5,7 @@ public class GameMenu : MonoBehaviour
 {
     [SerializeField] private ResultHandler _resultHandler;
     [SerializeField] private TMP_Text _currentGameScoresViewer;
-    [SerializeField] private int _maxScoreClamp;
+    [SerializeField] [Min(0)] private int _maxScoreClamp;
 
     private void Update()
     {

@@ -5,7 +5,7 @@ using UnityEngine.Audio;
 
 public class ClipPlayer : MonoBehaviour
 {
-    [SerializeField] private int _audioSourcesPoolCount;
+    [SerializeField][Min(0)] private int _audioSourcesPoolCount;
     [SerializeField] private AudioClip[] _audioClips;
     [SerializeField] private AudioMixerGroup _audioMixerGroup;
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameStatesSwitcher : MonoBehaviour
 {
-    [SerializeField] private PlayerTracker _mainCameraContainer;
+    [SerializeField] private MainCameraContainer _mainCameraContainer;
     [SerializeField] private LevelLoader _levelLoader;
     [SerializeField] private ResultHandler _resultHandler;
     [SerializeField] private Player _player;

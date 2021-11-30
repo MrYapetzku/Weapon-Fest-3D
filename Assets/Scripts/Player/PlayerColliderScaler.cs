@@ -5,7 +5,7 @@ public class PlayerColliderScaler : MonoBehaviour
 {
     [SerializeField] private Player _player;
     [SerializeField] private SphereCollider _playerCollider;
-    [SerializeField] private float _minPlayerColliderRadius;
+    [SerializeField] [Min(0)] private float _minPlayerColliderRadius;
 
     private void OnEnable()
     {

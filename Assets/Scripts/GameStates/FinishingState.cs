@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class FinishingState : IGameState
@@ -7,17 +6,11 @@ public class FinishingState : IGameState
     private Animator _cameraAnimator;
     private Animator _playerAnimator;
 
-    public FinishingState(ResultHandler resultHandler, PlayerTracker mainCameraContainer, Player player)
+    public FinishingState(ResultHandler resultHandler, MainCameraContainer mainCameraContainer, Player player)
     {
         _resultHandler = resultHandler;
-
-        _cameraAnimator = mainCameraContainer.GetComponent<Animator>();
-        if (_cameraAnimator == null)
-            throw new Exception($"Main camera container doesn't contain component {typeof(Animator)}");
-
-        _playerAnimator = player.GetComponent<Animator>();
-        if (_playerAnimator == null)
-            throw new Exception($"Player doesn't contain component {typeof(Animator)}");
+        _cameraAnimator = mainCameraContainer.Animator;
+        _playerAnimator = player.Animator;
     }
 
     public void Enter()

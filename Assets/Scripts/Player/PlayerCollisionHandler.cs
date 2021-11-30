@@ -3,13 +3,13 @@
 [RequireComponent(typeof(Player))]
 public class PlayerCollisionHandler : MonoBehaviour
 {
-    [SerializeField]private Player _player;
+    [SerializeField] private Player _player;
     [SerializeField] private ParticleSystem _gunExplosion;
 
     private void OnTriggerEnter(Collider other)
     {
         var balloon = other.GetComponentInParent<Balloon>();
-        var changer = other.GetComponentInParent<GunsCountChanger>();
+        var modifier = other.GetComponentInParent<Modifier>();
         var finish = other.GetComponentInParent<FinishTrigger>();
 
         if (finish)
@@ -18,35 +18,33 @@ public class PlayerCollisionHandler : MonoBehaviour
         if (balloon)
         {
             balloon.TakeOffGun();
-            _player.ChangeGunsBy(-balloon.Damage);
+            _player.ChangeGunsTo(_player.Guns - balloon.Damage);
         }
 
-        if (changer)
+        if (modifier)
         {
             other.enabled = false;
             var pairCollisionDisabler = other.GetComponentInParent<PairColliderDisabler>();
             if (pairCollisionDisabler)
                 pairCollisionDisabler.DisablePairCollider();
 
-            switch (changer.Type)
+            switch (modifier.Type)
             {
-                case GunsCountChanger.OperationType.Add:
-                    _player.ChangeGunsBy(changer.Value);
+                case Modifier.OperationType.Add:
+                    _player.ChangeGunsTo(_player.Guns + modifier.Value);
                     break;
 
-                case GunsCountChanger.OperationType.Subtract:
-                    _player.ChangeGunsBy(-changer.Value);
+                case Modifier.OperationType.Subtract:
+                    _player.ChangeGunsTo(_player.Guns - modifier.Value);
                     _gunExplosion.Play();
                     break;
 
-                case GunsCountChanger.OperationType.Multiply:
-                    int increaseValue = _player.Guns * (changer.Value - 1);
-                    _player.ChangeGunsBy(increaseValue);
+                case Modifier.OperationType.Multiply:
+                    _player.ChangeGunsTo(_player.Guns * modifier.Value);
                     break;
 
-                case GunsCountChanger.OperationType.Divide:
-                    int decreaseValue = _player.Guns - (_player.Guns / changer.Value);
-                    _player.ChangeGunsBy(-decreaseValue);
+                case Modifier.OperationType.Divide:
+                    _player.ChangeGunsTo(_player.Guns / modifier.Value);
                     _gunExplosion.Play();
                     break;
             }

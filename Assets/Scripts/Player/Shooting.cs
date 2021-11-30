@@ -6,8 +6,8 @@ public class Shooting : MonoBehaviour
 {
     [SerializeField] private BulletContainer _bulletContainer;
     [SerializeField] private Bullet _bulletTemplate;
-    [SerializeField] private int _poolCount;
-    [SerializeField] private float _shootingTimeDelta;
+    [SerializeField] [Min(1)] private int _poolCount;
+    [SerializeField] [Min(0)] private float _shootingTimeDelta;
 
     public PoolMono<Bullet> BulletPool;
 
