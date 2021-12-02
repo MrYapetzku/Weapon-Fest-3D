@@ -1254,6 +1254,7 @@ MonoBehaviour:
   _environmentContainer: {fileID: 177450508}
   _gameObjectsContainer: {fileID: 287590679}
   _soundSource: {fileID: 1846901512}
+  _levelGameObjects: {fileID: 0}
 --- !u!4 &289971099
 Transform:
   m_ObjectHideFlags: 0

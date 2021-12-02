@@ -14,5 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _skyBoxMaterial: {fileID: 2100000, guid: 3919d8bcabe3b9545ab7db03699e4baf, type: 2}
   _levelEnvironmentTemplate: {fileID: 4164431236081482499, guid: 69af126b42cd9444686279cdc28bab5e, type: 3}
-  _levelGameObjectsTemplate: {fileID: 2716367669196834003, guid: 3517fc7e75ce9fc4da2452d834bae976, type: 3}
+  _levelGameObjectsTemplate:
+    m_AssetGUID: 3517fc7e75ce9fc4da2452d834bae976
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   _fogColor: {r: 0.9843137, g: 0.63529414, b: 0.3764706, a: 1}

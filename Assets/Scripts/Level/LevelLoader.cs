@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.Events;
 
 public class LevelLoader : MonoBehaviour
@@ -7,11 +9,14 @@ public class LevelLoader : MonoBehaviour
     [SerializeField] private GameObjectsContainer _gameObjectsContainer;
     [SerializeField] private GameSoundsPlayer _soundSource;
 
+    private int _currentLevelIndex;
+    private int _nextLevelIndex;
+    private AsyncOperationHandle<GameObject> _currentLevelResult;
+    private AsyncOperationHandle<GameObject> _nextLevelResult;
+    private bool flag;
+
     private LevelSettings[] _settings;
     private LevelEnvironment _loadedEnvironment;
-    private LevelGameObjects _loadedLevelGameObjects;
-
-    private LevelGameObjects _nextLoadedLevelGameObjects;
 
     public event UnityAction LevelGameObjectsLoaded;
 
@@ -20,33 +25,61 @@ public class LevelLoader : MonoBehaviour
         _settings = Resources.LoadAll<LevelSettings>("");
         if (_settings == null)
             throw new System.Exception("Level settings resources didn't load.");
+
+        flag = false;
     }
 
-    public void Load(int levelNuber)
+    public async void Load(int levelNuber)
     {
-        if (levelNuber > _settings.Length)
-            levelNuber = Random.Range(1, _settings.Length);
+        if (!flag)
+        {
+            _nextLevelIndex = GetValidLevelIndex(levelNuber);
+            _nextLevelResult = Addressables.InstantiateAsync(_settings[_nextLevelIndex].LevelGameObjects, _gameObjectsContainer.transform);
+        }
 
-        int levelIndex = levelNuber - 1;
-
-        if (levelIndex < 0 || levelIndex >= _settings.Length)
-            throw new System.Exception("Invalid level settings index.");
-
+        _currentLevelIndex = _nextLevelIndex;
+        _nextLevelIndex = GetValidLevelIndex(levelNuber + 1);
 
         if (_loadedEnvironment)
             Destroy(_loadedEnvironment.gameObject);
 
-        if (_loadedLevelGameObjects)
+        if (flag)
         {
             _soundSource.Release();
-            Destroy(_loadedLevelGameObjects.gameObject);
+            _currentLevelResult.Result.gameObject.SetActive(false);
+            Addressables.ReleaseInstance(_currentLevelResult.Result);
         }
 
-        RenderSettings.skybox = _settings[levelIndex].SkyBoxMaterial;
-        RenderSettings.fogColor = _settings[levelIndex].FogColor;
-        _loadedEnvironment = Instantiate(_settings[levelIndex].LevelEnvironment, _environmentContainer.transform);
-        _loadedLevelGameObjects = Instantiate(_settings[levelIndex].LevelGameObjects, _gameObjectsContainer.transform);
-        LevelGameObjectsLoaded?.Invoke();
-        _soundSource.Init();
+        RenderSettings.skybox = _settings[_currentLevelIndex].SkyBoxMaterial;
+        RenderSettings.fogColor = _settings[_currentLevelIndex].FogColor;
+        _loadedEnvironment = Instantiate(_settings[_currentLevelIndex].LevelEnvironment, _environmentContainer.transform);
+
+        _currentLevelResult = _nextLevelResult;
+
+        await _currentLevelResult.Task;
+        if (_currentLevelResult.Status == AsyncOperationStatus.Succeeded)
+        {
+            _currentLevelResult.Result.gameObject.SetActive(true);
+            flag = true;
+            LevelGameObjectsLoaded?.Invoke();
+            _soundSource.Init();
+
+            _nextLevelResult = Addressables.InstantiateAsync(_settings[_nextLevelIndex].LevelGameObjects, _gameObjectsContainer.transform);
+            await _nextLevelResult.Task;
+            if (_nextLevelResult.Status == AsyncOperationStatus.Succeeded)
+                _nextLevelResult.Result.gameObject.SetActive(false);
+
+        }
+    }
+
+    private int GetValidLevelIndex(int levelNumber)
+    {
+        if (levelNumber < 1)
+            throw new System.Exception("Invalid level number.");
+
+        if (levelNumber > _settings.Length)
+            return Random.Range(0, _settings.Length - 1);
+        else
+            return levelNumber - 1;
     }
 }
