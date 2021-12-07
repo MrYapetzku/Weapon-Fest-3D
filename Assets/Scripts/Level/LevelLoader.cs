@@ -13,7 +13,7 @@ public class LevelLoader : MonoBehaviour
     private int _nextLevelIndex;
     private AsyncOperationHandle<GameObject> _currentLevelResult;
     private AsyncOperationHandle<GameObject> _nextLevelResult;
-    private bool flag;
+    private bool isFirstRun;
 
     private LevelSettings[] _settings;
     private LevelEnvironment _loadedEnvironment;
@@ -26,12 +26,12 @@ public class LevelLoader : MonoBehaviour
         if (_settings == null)
             throw new System.Exception("Level settings resources didn't load.");
 
-        flag = false;
+        isFirstRun = true;
     }
 
     public async void Load(int levelNuber)
     {
-        if (!flag)
+        if (isFirstRun)
         {
             _nextLevelIndex = GetValidLevelIndex(levelNuber);
             _nextLevelResult = Addressables.InstantiateAsync(_settings[_nextLevelIndex].LevelGameObjects, _gameObjectsContainer.transform);
@@ -43,7 +43,7 @@ public class LevelLoader : MonoBehaviour
         if (_loadedEnvironment)
             Destroy(_loadedEnvironment.gameObject);
 
-        if (flag)
+        if (!isFirstRun)
         {
             _soundSource.Release();
             _currentLevelResult.Result.gameObject.SetActive(false);
@@ -60,7 +60,7 @@ public class LevelLoader : MonoBehaviour
         if (_currentLevelResult.Status == AsyncOperationStatus.Succeeded)
         {
             _currentLevelResult.Result.gameObject.SetActive(true);
-            flag = true;
+            isFirstRun = false;
             LevelGameObjectsLoaded?.Invoke();
             _soundSource.Init();
 
@@ -68,7 +68,6 @@ public class LevelLoader : MonoBehaviour
             await _nextLevelResult.Task;
             if (_nextLevelResult.Status == AsyncOperationStatus.Succeeded)
                 _nextLevelResult.Result.gameObject.SetActive(false);
-
         }
     }
 
