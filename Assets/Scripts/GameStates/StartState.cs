@@ -50,7 +50,7 @@ public class StartState : IGameState
 
     private void OnLevelGameObjectsLoaded()
     {
-        _playerInput.UI.Enable();
+        Fader.Instance.FadeOut(() => _playerInput.UI.Enable());
     }
 
     private void OnResultsLoaded()

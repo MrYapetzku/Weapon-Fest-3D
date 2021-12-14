@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class LevelLoader : MonoBehaviour
 {
+    private const string LEVEL_SETTINGS_PATH = "";
+
     [SerializeField] private EnvironmentContainer _environmentContainer;
     [SerializeField] private GameObjectsContainer _gameObjectsContainer;
     [SerializeField] private GameSoundsPlayer _soundSource;
@@ -13,7 +15,7 @@ public class LevelLoader : MonoBehaviour
     private int _nextLevelIndex;
     private AsyncOperationHandle<GameObject> _currentLevelResult;
     private AsyncOperationHandle<GameObject> _nextLevelResult;
-    private bool isFirstRun;
+    private bool _isFirstRun;
 
     private LevelSettings[] _settings;
     private LevelEnvironment _loadedEnvironment;
@@ -22,16 +24,17 @@ public class LevelLoader : MonoBehaviour
 
     private void Awake()
     {
-        _settings = Resources.LoadAll<LevelSettings>("");
+        Fader.Instance.gameObject.SetActive(true);
+        _settings = Resources.LoadAll<LevelSettings>(LEVEL_SETTINGS_PATH);
         if (_settings == null)
             throw new System.Exception("Level settings resources didn't load.");
 
-        isFirstRun = true;
+        _isFirstRun = true;
     }
 
     public async void Load(int levelNuber)
     {
-        if (isFirstRun)
+        if (_isFirstRun)
         {
             _nextLevelIndex = GetValidLevelIndex(levelNuber);
             _nextLevelResult = Addressables.InstantiateAsync(_settings[_nextLevelIndex].LevelGameObjects, _gameObjectsContainer.transform);
@@ -43,7 +46,7 @@ public class LevelLoader : MonoBehaviour
         if (_loadedEnvironment)
             Destroy(_loadedEnvironment.gameObject);
 
-        if (!isFirstRun)
+        if (!_isFirstRun)
         {
             _soundSource.Release();
             _currentLevelResult.Result.gameObject.SetActive(false);
@@ -60,8 +63,10 @@ public class LevelLoader : MonoBehaviour
         if (_currentLevelResult.Status == AsyncOperationStatus.Succeeded)
         {
             _currentLevelResult.Result.gameObject.SetActive(true);
-            isFirstRun = false;
+            _isFirstRun = false;
+
             LevelGameObjectsLoaded?.Invoke();
+
             _soundSource.Init();
 
             _nextLevelResult = Addressables.InstantiateAsync(_settings[_nextLevelIndex].LevelGameObjects, _gameObjectsContainer.transform);

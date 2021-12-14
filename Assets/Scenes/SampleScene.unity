@@ -1254,7 +1254,6 @@ MonoBehaviour:
   _environmentContainer: {fileID: 177450508}
   _gameObjectsContainer: {fileID: 287590679}
   _soundSource: {fileID: 1846901512}
-  _levelGameObjects: {fileID: 0}
 --- !u!4 &289971099
 Transform:
   m_ObjectHideFlags: 0
@@ -3780,9 +3779,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1356263513}
   - component: {fileID: 1356263516}
+  - component: {fileID: 1356263517}
   - component: {fileID: 1356263515}
   - component: {fileID: 1356263514}
-  - component: {fileID: 1356263517}
+  - component: {fileID: 1356263518}
   m_Layer: 5
   m_Name: NextLevelButton
   m_TagString: Untagged
@@ -3855,9 +3855,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 793910166}
-        m_TargetAssemblyTypeName: GameStatesSwitcher, Assembly-CSharp
-        m_MethodName: SetStartState
+      - m_Target: {fileID: 1356263518}
+        m_TargetAssemblyTypeName: FadeInHandler, Assembly-CSharp
+        m_MethodName: HandleFadeIn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3924,6 +3924,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1356263518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356263512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24ce60f98c106294abf240b9e4b3ce76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameStatesSwitcher: {fileID: 793910166}
 --- !u!1 &1378175733
 GameObject:
   m_ObjectHideFlags: 0
@@ -4458,9 +4471,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1804546394}
   - component: {fileID: 1804546398}
+  - component: {fileID: 1804546395}
   - component: {fileID: 1804546397}
   - component: {fileID: 1804546396}
-  - component: {fileID: 1804546395}
+  - component: {fileID: 1804546399}
   m_Layer: 5
   m_Name: TryAgainlButton
   m_TagString: Untagged
@@ -4552,9 +4566,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 793910166}
-        m_TargetAssemblyTypeName: GameStatesSwitcher, Assembly-CSharp
-        m_MethodName: SetStartState
+      - m_Target: {fileID: 1804546399}
+        m_TargetAssemblyTypeName: FadeInHandler, Assembly-CSharp
+        m_MethodName: HandleFadeIn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4602,6 +4616,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1804546393}
   m_CullTransparentMesh: 1
+--- !u!114 &1804546399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804546393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24ce60f98c106294abf240b9e4b3ce76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameStatesSwitcher: {fileID: 793910166}
 --- !u!1 &1846901510
 GameObject:
   m_ObjectHideFlags: 0
