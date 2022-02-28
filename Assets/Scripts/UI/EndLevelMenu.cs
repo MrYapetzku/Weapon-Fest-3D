@@ -56,4 +56,9 @@ public class EndLevelMenu : MonoBehaviour
         _currentGameScoreViewer.text = _currentGameScores.ToString();
         _allGameScoresViewer.text = _allScores.ToString();
     }
+
+    public void SetActive(bool isActive)
+    {
+        gameObject.SetActive(isActive);
+    }
 }

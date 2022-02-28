@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class FinishedState : IGameState
@@ -22,7 +21,7 @@ public class FinishedState : IGameState
 
     public void Enter()
     {
-        _endLevelMenu.gameObject.SetActive(true);
+        _endLevelMenu.SetActive(true);
         _resultHandler.Save();
         _cameraAnimator.SetTrigger(MainCameraAnimator.Finished);
         _playerAnimator.SetTrigger(PlayerAnimator.Idle);
@@ -30,10 +29,10 @@ public class FinishedState : IGameState
 
     public void Exit()
     {
-        _playerTracker.enabled = true;
-        _endLevelMenu.gameObject.SetActive(false);
+        _playerTracker.Enable();
+        _endLevelMenu.SetActive(false);
         _cameraAnimator.ResetTrigger(MainCameraAnimator.Finished);
         _playerAnimator.ResetTrigger(PlayerAnimator.Idle);
-        _wind_FX.gameObject.SetActive(false);
+        _wind_FX.SetActive(false);
     }
 }

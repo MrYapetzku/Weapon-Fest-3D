@@ -46,4 +46,14 @@ public class Shooting : MonoBehaviour
         Fire?.Invoke(_isFinalFire);
         _finalShotBulletChecker.enabled = true;
     }
+
+    public void Enable()
+    {
+        enabled = true;
+    }
+
+    public void Disable()
+    {
+        enabled = false;
+    }
 }

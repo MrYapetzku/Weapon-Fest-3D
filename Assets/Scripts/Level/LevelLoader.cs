@@ -32,16 +32,16 @@ public class LevelLoader : MonoBehaviour
         _isFirstRun = true;
     }
 
-    public async void Load(int levelNuber)
+    public async void Load(int levelNumber)
     {
         if (_isFirstRun)
         {
-            _nextLevelIndex = GetValidLevelIndex(levelNuber);
+            _nextLevelIndex = GetValidLevelIndex(levelNumber);
             _nextLevelResult = Addressables.InstantiateAsync(_settings[_nextLevelIndex].LevelGameObjects, _gameObjectsContainer.transform);
         }
 
         _currentLevelIndex = _nextLevelIndex;
-        _nextLevelIndex = GetValidLevelIndex(levelNuber + 1);
+        _nextLevelIndex = GetValidLevelIndex(levelNumber + 1);
 
         if (_loadedEnvironment)
             Destroy(_loadedEnvironment.gameObject);

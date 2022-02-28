@@ -19,18 +19,18 @@ public class PlayState : IGameState
 
     public void Enter()
     {
-        _resultHandler.enabled = true;
+        _resultHandler.Enable();
         _cameraAnimator.SetTrigger(MainCameraAnimator.Start);
-        _playerMover.enabled = true;
-        _shooting.enabled = true;
-        _gameMenu.gameObject.SetActive(true);
+        _playerMover.Enable();
+        _shooting.Enable();
+        _gameMenu.SetActive(true);
     }
 
     public void Exit()
     {
         _cameraAnimator.ResetTrigger(MainCameraAnimator.Start);
-        _playerMover.enabled = false;
-        _shooting.enabled = false;
-        _gameMenu.gameObject.SetActive(false);
+        _playerMover.Disable();
+        _shooting.Disable();
+        _gameMenu.SetActive(false);
     }
 }

@@ -23,6 +23,6 @@ public class FinishingState : IGameState
     {
         _cameraAnimator.ResetTrigger(MainCameraAnimator.Finishing);
         _playerAnimator.ResetTrigger(PlayerAnimator.Finishing);
-        _resultHandler.enabled = false;
+        _resultHandler.Disable();
     }
 }

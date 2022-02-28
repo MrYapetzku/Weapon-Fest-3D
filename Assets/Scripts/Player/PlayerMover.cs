@@ -44,4 +44,14 @@ public class PlayerMover : MonoBehaviour
 
         transform.position = new Vector3(targetPositionX, 0, transform.position.z);
     }
+
+    public void Enable()
+    {
+        enabled = true;
+    }
+
+    public void Disable()
+    {
+        enabled = false;
+    }
 }

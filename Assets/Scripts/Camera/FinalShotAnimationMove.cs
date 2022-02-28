@@ -8,4 +8,14 @@ public class FinalShotAnimationMove : MonoBehaviour
     {
         transform.Translate(Vector3.forward * _bulletPrefab.FinalShootSpeed * Time.deltaTime);
     }
+
+    public void Enable()
+    {
+        enabled = true;
+    }
+
+    public void Disable()
+    {
+        enabled = false;
+    }
 }

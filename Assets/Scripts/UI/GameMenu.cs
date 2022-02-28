@@ -13,4 +13,9 @@ public class GameMenu : MonoBehaviour
 
         _currentGameScoresViewer.text = result.ToString();
     }
+
+    public void SetActive(bool isActive)
+    {
+        gameObject.SetActive(isActive);
+    }
 }

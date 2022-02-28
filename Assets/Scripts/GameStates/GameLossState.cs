@@ -13,13 +13,13 @@ public class GameLossState : IGameState
 
     public void Enter()
     {
-        _resultHandler.enabled = false;
-        _gameLossMenu.gameObject.SetActive(true);
+        _resultHandler.Disable();
+        _gameLossMenu.SetActive(true);
     }
 
     public void Exit()
     {
-        _gameLossMenu.gameObject.SetActive(false);
-        _wind_FX.gameObject.SetActive(false);
+        _gameLossMenu.SetActive(false);
+        _wind_FX.SetActive(false);
     }
 }

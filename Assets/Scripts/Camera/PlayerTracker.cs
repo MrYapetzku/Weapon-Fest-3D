@@ -16,6 +16,16 @@ public class PlayerTracker : MonoBehaviour
         transform.position = new Vector3(transform.position.x, transform.position.y, _player.transform.position.z - _distanceToPlayerZ);
     }
 
+    public void Enable()
+    {
+        enabled = true;
+    }
+
+    public void Disable()
+    {
+        enabled = false;
+    }
+
     private void OnLevelFinished()
     {
         _player.OnLevelFinished();

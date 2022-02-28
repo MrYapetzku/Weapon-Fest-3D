@@ -61,6 +61,7 @@ public class ResultHandler : MonoBehaviour
         _currentGameScores += balloonScores;
     }
 
+
     public void Save()
     {
         _allCollectedScores += _currentGameScores;
@@ -78,5 +79,15 @@ public class ResultHandler : MonoBehaviour
         _allCollectedScores = _gameData.Scores;
         _currentLevel = _gameData.CurrentLevel;
         ResultsLoaded?.Invoke();
+    }
+
+    public void Enable()
+    {
+        enabled = true;
+    }
+
+    public void Disable()
+    {
+        enabled = false;
     }
 }

@@ -33,10 +33,10 @@ public class StartState : IGameState
         _player.transform.position = Vector3.zero;
         _player.ResetGuns();
         _playerAnimator.SetTrigger(PlayerAnimator.Idle);
-        _mainMenu.gameObject.SetActive(true);
-        _mainCameraContainer.Wind_FX.gameObject.SetActive(true);
-        _mainCameraContainer.PlayerTracker.enabled = true;
-        _mainCameraContainer.FinalShotAnimationMove.enabled = false;
+        _mainMenu.SetActive(true);
+        _mainCameraContainer.Wind_FX.SetActive(true);
+        _mainCameraContainer.PlayerTracker.Enable();
+        _mainCameraContainer.FinalShotAnimationMove.Enable();
     }
 
     public void Exit()
@@ -45,7 +45,7 @@ public class StartState : IGameState
         _levelLoader.LevelLoaded -= OnLevelLoaded;
         _cameraAnimator.ResetTrigger(MainCameraAnimator.Reset);
         _playerAnimator.ResetTrigger(PlayerAnimator.Idle);
-        _mainMenu.gameObject.SetActive(false);
+        _mainMenu.SetActive(false);
     }
 
     private void OnLevelLoaded()

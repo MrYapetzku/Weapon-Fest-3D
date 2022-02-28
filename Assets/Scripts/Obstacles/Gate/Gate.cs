@@ -28,7 +28,7 @@ public class Gate : MonoBehaviour
         {
             var settings = Resources.LoadAll<GateSettings>("");
             if (settings == null)
-                throw new System.Exception("Gun count changers resources didn't load.");
+                throw new System.Exception("Gates resources didn't load.");
             int index = Random.Range(0, settings.Length);
             _type = settings[index].Type;
             _value = settings[index].Value;
