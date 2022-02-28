@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06f6e6ca9ce4156419325fd1ca5c78b4, type: 3}
-  m_Name: ModifierSettings1
+  m_Name: GateSettings1
   m_EditorClassIdentifier: 
   _type: 0
   _value: 10

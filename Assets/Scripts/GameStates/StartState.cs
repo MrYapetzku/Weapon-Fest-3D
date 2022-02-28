@@ -26,7 +26,7 @@ public class StartState : IGameState
     public void Enter()
     {
         _resultHandler.ResultsLoaded += OnResultsLoaded;
-        _levelLoader.LevelGameObjectsLoaded += OnLevelGameObjectsLoaded;
+        _levelLoader.LevelLoaded += OnLevelLoaded;
         _resultHandler.Load();
         _mainCameraContainer.transform.position = Vector3.zero;
         _cameraAnimator.SetTrigger(MainCameraAnimator.Reset);
@@ -42,15 +42,16 @@ public class StartState : IGameState
     public void Exit()
     {
         _resultHandler.ResultsLoaded -= OnResultsLoaded;
-        _levelLoader.LevelGameObjectsLoaded -= OnLevelGameObjectsLoaded;
+        _levelLoader.LevelLoaded -= OnLevelLoaded;
         _cameraAnimator.ResetTrigger(MainCameraAnimator.Reset);
         _playerAnimator.ResetTrigger(PlayerAnimator.Idle);
         _mainMenu.gameObject.SetActive(false);
     }
 
-    private void OnLevelGameObjectsLoaded()
+    private void OnLevelLoaded()
     {
-        Fader.Instance.FadeOut(() => _playerInput.UI.Enable());
+        //Fader.Instance.FadeOut(() => _playerInput.UI.Enable());
+        _playerInput.UI.Enable();
     }
 
     private void OnResultsLoaded()

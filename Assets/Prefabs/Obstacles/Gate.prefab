@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 437880772975882512}
   - component: {fileID: 437880772975882513}
   m_Layer: 0
-  m_Name: GunsCountChanger
+  m_Name: Gate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -376,7 +376,7 @@ GameObject:
   - component: {fileID: 437880773646628274}
   - component: {fileID: 4007488082150733548}
   m_Layer: 0
-  m_Name: Modifier
+  m_Name: Gate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

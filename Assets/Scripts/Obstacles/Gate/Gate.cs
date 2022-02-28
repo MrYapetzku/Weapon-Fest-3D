@@ -1,7 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 
-public class Modifier : MonoBehaviour
+public class Gate : MonoBehaviour
 {
     [SerializeField] private TMP_Text _text;
     [SerializeField] private MeshRenderer _meshRenderer;
@@ -26,7 +26,7 @@ public class Modifier : MonoBehaviour
     {
         if (_type == OperationType.RandomFromSettings)
         {
-            var settings = Resources.LoadAll<ModifierSettings>("");
+            var settings = Resources.LoadAll<GateSettings>("");
             if (settings == null)
                 throw new System.Exception("Gun count changers resources didn't load.");
             int index = Random.Range(0, settings.Length);

@@ -3855,9 +3855,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1356263518}
-        m_TargetAssemblyTypeName: FadeInHandler, Assembly-CSharp
-        m_MethodName: HandleFadeIn
+      - m_Target: {fileID: 793910166}
+        m_TargetAssemblyTypeName: GameStatesSwitcher, Assembly-CSharp
+        m_MethodName: SetStartState
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4566,9 +4566,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1804546399}
-        m_TargetAssemblyTypeName: FadeInHandler, Assembly-CSharp
-        m_MethodName: HandleFadeIn
+      - m_Target: {fileID: 793910166}
+        m_TargetAssemblyTypeName: GameStatesSwitcher, Assembly-CSharp
+        m_MethodName: SetStartState
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

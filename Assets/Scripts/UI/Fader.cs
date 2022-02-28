@@ -50,15 +50,15 @@ public class Fader : MonoBehaviour
 
     private void Handle_FadeInAnimationOver()
     {
+        IsFading = false;
         _fadedInCallback?.Invoke();
         _fadedInCallback = null;
-        IsFading = false;
     }
 
     private void Handle_FadeOutAnimationOver()
     {
+        IsFading = false;
         _fadedOutCallback?.Invoke();
         _fadedOutCallback = null;
-        IsFading = false;
     }
 }

@@ -20,11 +20,11 @@ public class LevelLoader : MonoBehaviour
     private LevelSettings[] _settings;
     private LevelEnvironment _loadedEnvironment;
 
-    public event UnityAction LevelGameObjectsLoaded;
+    public event UnityAction LevelLoaded;
 
     private void Awake()
     {
-        Fader.Instance.gameObject.SetActive(true);
+        //Fader.Instance.gameObject.SetActive(true);
         _settings = Resources.LoadAll<LevelSettings>(LEVEL_SETTINGS_PATH);
         if (_settings == null)
             throw new System.Exception("Level settings resources didn't load.");
@@ -65,7 +65,7 @@ public class LevelLoader : MonoBehaviour
             _currentLevelResult.Result.gameObject.SetActive(true);
             _isFirstRun = false;
 
-            LevelGameObjectsLoaded?.Invoke();
+            LevelLoaded?.Invoke();
 
             _soundSource.Init();
 

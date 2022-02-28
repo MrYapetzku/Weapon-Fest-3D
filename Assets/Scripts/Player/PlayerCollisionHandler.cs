@@ -9,7 +9,7 @@ public class PlayerCollisionHandler : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         var balloon = other.GetComponentInParent<Balloon>();
-        var modifier = other.GetComponentInParent<Modifier>();
+        var modifier = other.GetComponentInParent<Gate>();
         var finish = other.GetComponentInParent<FinishTrigger>();
 
         if (finish)
@@ -30,20 +30,20 @@ public class PlayerCollisionHandler : MonoBehaviour
 
             switch (modifier.Type)
             {
-                case Modifier.OperationType.Add:
+                case Gate.OperationType.Add:
                     _player.ChangeGunsTo(_player.Guns + modifier.Value);
                     break;
 
-                case Modifier.OperationType.Subtract:
+                case Gate.OperationType.Subtract:
                     _player.ChangeGunsTo(_player.Guns - modifier.Value);
                     _gunExplosion.Play();
                     break;
 
-                case Modifier.OperationType.Multiply:
+                case Gate.OperationType.Multiply:
                     _player.ChangeGunsTo(_player.Guns * modifier.Value);
                     break;
 
-                case Modifier.OperationType.Divide:
+                case Gate.OperationType.Divide:
                     _player.ChangeGunsTo(_player.Guns / modifier.Value);
                     _gunExplosion.Play();
                     break;
